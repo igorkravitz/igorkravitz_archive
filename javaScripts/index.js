@@ -116,7 +116,7 @@ function writeFooter() {
 
 function writeNav() {
 	var titles = {
-		'Index.html':'Главная',
+		'index.html':'Главная',
 		'CSharp.html':'C#',
 		'Java.html':'Java',
 		'Python.html':'Python',
