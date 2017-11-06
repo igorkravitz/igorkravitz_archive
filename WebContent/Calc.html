@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Калькулятор</title>
+<link rel="stylesheet" type="text/css" href="cssFiles\index.css">
+<script type="text/javascript" src="javaScripts\index.js"></script>
+</head>
+<body>
+	<article>
+		<header role="banner">
+		<script type="text/javascript">writeNav();</script>
+			<hgroup>
+				<h1>Калькулятор</h1>
+				<h1 class="Teaser">Сложение 2 чисел</h1>
+			</hgroup>
+			<p class="Byline"></p>
+		</header>
+		<form action="" id="CalculatorForm">
+			<label for="number1">Число 1:</label> <input name="number1"
+				id="number1"><br> <label for="number2">Число 2:</label>
+			<input name="number2" id="number2"><br> <input
+				type="button" name="calc" value="Сложить"
+				onclick="CalculateFunction(Number(this.form.number1.value), Number(this.form.number2.value), 'result')">
+			<output id="result"></output>
+			<br> <input type="reset" name="reset" value="Сбросить"
+				onclick="myReset('result')">
+		</form>
+		<div class="emptyblock"></div>
+		<script type="text/javascript">writeFooter();</script>
+	</article>
+</body>
+</html>

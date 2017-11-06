@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Анкета</title>
+<link rel="stylesheet" type="text/css" href="cssFiles\index.css">
+<script type="text/javascript" src="javaScripts\index.js"></script>
+</head>
+<body>
+	<header role="banner">
+		<script type="text/javascript">writeNav()</script>
+		<hgroup>
+			<h1>Пример анкеты</h1>
+			<h1 class="Teaser">Пример заполнения анкеты</h1>
+		</hgroup>
+		<p class="Byline"></p>
+	</header>
+	<form action="#">
+		<p>
+			<i>Пожалуйста, заполните форму. Обязательные поля помечены </i><em>*</em>
+		</p>
+		<fieldset>
+			<legend>Контактная информация</legend>
+			<label for="name">Имя <em>*</em></label> <input id="name"
+				placeholder="Иван Иванов" autofocus="autofocus" required="required"><br>
+			<label for="telephone">Телефон</label> <input id="telephone"
+				placeholder="+373-xx-xx-xx-xx"><br> <label for="email">Email
+				<em>*</em>
+			</label>
+			<!--       <input id="email" required="required" pattern="\S+@[a-z]+.[a-z]+" placeholder="xxxxxxx@xxx.xxx"><br> -->
+			<input id="email" type="email" required="required"><br>
+		</fieldset>
+		<fieldset>
+			<legend>Персональная информация</legend>
+			<label id="labelAge" for="age">Возраст<em>*</em></label> <input
+				id="age" placeholder="xx" type="range" min="18" max="120"
+				oninput="onChangeAge(this)"><br> <label for="age">Дата
+				рождения<em>*</em>
+			</label> <input id="dateBirdth" type="date" min="1920-01-01" max="2000-01-01"><br>
+			<label for="gender">Пол</label> <select id="gender">
+				<option value="female">Женщина</option>
+				<option value="male">Мужчина</option>
+			</select><br> <label for="comments">Перечислите личные качества</label>
+			<textarea id="comments" oninput="validateComments(this)"></textarea>
+		</fieldset>
+
+		<fieldset>
+			<legend>Выберите ваших любимых животных</legend>
+			<label for="zebra"><input id="zebra" type="checkbox">
+				Зебра</label> <label for="cat"><input id="cat" type="checkbox">
+				Кошка</label> <label for="anaconda"><input id="anaconda"
+				type="checkbox"> Анаконда</label> <label for="human"><input
+				id="human" type="checkbox"> Человек</label> <label for="elephant"><input
+				id="elephant" type="checkbox"> Слон</label> <label for="wildebeest"><input
+				id="wildebeest" type="checkbox"> Антилопа</label> <label
+				for="pigeon"><input id="pigeon" type="checkbox">
+				Голубь</label> <label for="crab"><input id="crab" type="checkbox">
+				Краб</label> <label for="fruit">Фрукт</label> <input id="fruit"
+				list="dl_fruits">
+			<datalist id="dl_fruits">
+				<option label="Яблоко" value="Яблоко">
+				<option label="Ананас" value="Ананас">
+				<option label="Абрикос" value="Абрикос">
+				<option label="Арбуз" value="Арбуз">
+				<option label="Авокадо" value="Авокадо">
+				<option label="Апельсин" value="Апельсин">
+			</datalist>
+		</fieldset>
+		<p>
+			<input type="submit" value="Отправить информацию">
+		</p>
+	</form>
+	<!-- <progress value=0.25>25%</progress> -->
+	<progress>Расчет выполняется...</progress>
+	<p contenteditable="true">
+		Всего мы собрали 14,000 руб. из 50 000 руб.
+		<meter max="50000" value="14000"></meter>
+	</p>
+	<script type="text/javascript">writeFooter();</script>
+</body>
+</html>

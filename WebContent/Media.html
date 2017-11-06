@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Медиа</title>
+<link rel="stylesheet" type="text/css" href="cssFiles\index.css">
+<script type="text/javascript" src="javaScripts\index.js"></script>
+<link href="http://vjs.zencdn.net/6.2.8/video-js.css" rel="stylesheet">
+<!-- <link rel="stylesheet" href="flowplayer-7.2.1/skin/skin.css"> -->
+<!-- <script src="//code.jquery.com/jquery-1.12.4.min.js"></script> -->
+<!-- <script src="flowplayer-7.2.1/flowplayer.min.js"></script> -->
+
+</head>
+<body>
+	<article>
+		<header role="banner">
+			<script type="text/javascript">writeNav()</script>
+			<hgroup>
+				<h1>Медиа</h1>
+				<h1 class="Teaser">Аудио,видео</h1>
+			</hgroup>
+			<p class="Byline"></p>
+		</header>
+		<!-- 		<audio controls="controls" src="media\Катя Чехова – Крылья (Sound Shocking Mix)(novteh.co)2.mp3"></audio> -->
+		<p>Катя Чехова – Крылья</p>
+		<audio controls="controls">
+			<source
+				src="media\Катя Чехова – Крылья (Sound Shocking Mix)(novteh.co)2.mp3">
+			<ins>Тег audio не поддерживается вашим браузером.</ins>
+		</audio>
+		<p>Ну-ну-ну! Но-но-но)).avi</p>
+		<video id="videoPlayer" width="600" height="400"
+			ontimeupdate="progressUpdate()">
+			<source src="media\Ну-ну-ну! Но-но-но)).avi.mp4">
+			<ins>Тег video не поддерживается вашим браузером.</ins>
+		</video>
+		<div class="barContainer">
+			<div id="durationBar">
+				<div id="positionBar">
+					<span id="displayStatus">0</span>
+				</div>
+			</div>
+		</div>
+		<div>
+			<button onclick="play()">Play</button>
+			<button onclick="pause()">Pause</button>
+			<button onclick="stop()">Stop</button>
+			<button onclick="speedUp()">Быстрей</button>
+			<button onclick="slowDown()">Медленее</button>
+			<button onclick="normalSpeed()">Нормальная скорость</button>
+		</div>
+		<p>
+		<video class="video-js" controls preload="auto" width="640"
+			height="264" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+			<source src="media\Ну-ну-ну! Но-но-но)).avi.mp4">
+		</video>
+		<script src="http://vjs.zencdn.net/6.2.8/video.js"></script>
+		<!-- 		<object type="application/x-shockwave-flash" -->
+		<!-- 			data="flowplayer-7.2.1/flowplayer-7.2.1.swf" -->
+		<!-- 			width="640" height="360"> -->
+		<!-- 			<param name="movie" -->
+		<!-- 				value="flowplayer-7.2.1/flowplayer-7.2.1.swf"> -->
+		<!-- 			<param name="allowFullScreen" value="true"> -->
+		<!-- 			<param name="wmode" value="transparent"> -->
+		<!-- 			<param name="flashVars" -->
+		<!-- 				value="config={'playlist':['http%3A%2F%2Fsandbox.thewikies.com%2Fvfe-generator%2Fimages%2Fbig-buck-bunny_poster.jpg',{'url':'Ну-ну-ну! Но-но-но)).avi.mp4','autoPlay':false}]}"> -->
+		<!-- 			<img alt="Big Buck Bunny" -->
+		<!-- 				src="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" -->
+		<!-- 				width="640" height="360" -->
+		<!-- 				title="No video playback capabilities, please download the video below"> -->
+		<!-- 		</object> -->
+		<script type="text/javascript">writeFooter();</script>
+	</article>
+</body>
+</html>
