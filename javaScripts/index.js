@@ -3,11 +3,12 @@ var display;
 
 window.onload = function() {
 	video = document.getElementById("videoPlayer");
-	drawningCanvas();
+	drawningCanvas1();
+	drawningCanvas2();
 };
 
-function drawningCanvas() {
-	var canvas = document.getElementById("drawingCanvas");
+function drawningCanvas1() {
+	var canvas = document.getElementById("drawingCanvas1");
 	var context = canvas.getContext("2d"); 
 	// Код для рисования вставляется сюда
 //	context.moveTo(10,10);
@@ -84,6 +85,118 @@ function drawningCanvas() {
 	context.strokeStyle = "#109bfc";
 	context.stroke();
 	   
+}
+
+function drawningCanvas2() {
+	var canvas = document.getElementById("drawingCanvas2");
+	var context = canvas.getContext("2d"); 
+	// Код для рисования вставляется сюда
+	
+	// Толщина и цвет кривой
+	context.lineWidth = 10;
+	context.strokeStyle = "rgb(16,155,252)";
+
+	// Устанавливаем начало кривой
+	context.moveTo(62, 242);
+
+	// Контрольные и конечная точки
+	var controlX_1 = 187;
+	var controlY_1 = 32;
+	var controlX_2 = 429;
+	var controlY_2 = 480;
+	var endPointX = 365;
+	var endPointY = 133;
+
+	// Рисуем кривую
+	context.bezierCurveTo(controlX_1, controlY_1, controlX_2, controlY_2,
+	                    endPointX, endPointY);
+	context.stroke();
+	   
+}
+
+var cCanvas3;
+var Canvas3;
+
+function drawningCanvas3() {
+	Canvas3 = document.getElementById("drawingCanvas3");
+	cCanvas3 = Canvas3.getContext("2d");
+	// Код для рисования вставляется сюда
+	
+	// Подключаем требуемые для рисования события
+	cCanvas3.onmousedown = startDrawing;
+	cCanvas3.onmouseup = stopDrawing;
+	cCanvas3.onmouseout = stopDrawing;
+	cCanvas3.onmousemove = draw;
+	   
+}
+
+var previousColorElement;
+
+function changeColor(color, imgElement)
+{
+    // 	Меняем текущий цвет рисования
+	cCanvas3.strokeStyle = color;
+	
+	// Меняем стиль элемента <img>, по которому щелкнули
+	imgElement.className = "Selected";
+	
+	// Возвращаем ранее выбранный элемент <img> в нормальное состояние
+	if (previousColorElement != null)
+	   previousColorElement.className = "";
+	   
+	previousColorElement = imgElement;
+}
+
+//Отслеживаем элемент <img> для толщины линии, по которому ранее щелкнули
+var previousThicknessElement;
+
+function changeThickness (thickness, imgElement)
+{
+    // Изменяем текущую толщину линии
+	cCanvas3.lineWidth = thickness;
+	
+	// Меняем стиль элемента <img>, по которому щелкнули
+	imgElement.className = "Selected";
+	
+	// Возвращаем ранее выбранный элемент <img> в нормальное состояние
+	if (previousThicknessElement != null)
+	   previousThicknessElement.className = "";
+	   
+	previousThicknessElement = imgElement;
+}
+
+var isDrawing;
+
+function startDrawing(e) {
+	// Начинаем рисовать
+	isDrawing = true;
+	
+	// Создаем новый путь (с текущим цветом и толщиной линии) 
+	cCanvas3.beginPath();
+	
+	// Нажатием левой кнопки мыши помещаем "кисть" на холст
+	cCanvas3.moveTo(e.pageX - Canvas3.offsetLeft, e.pageY - Canvas3.offsetTop);
+}
+
+function draw(e) {
+	if (isDrawing == true)
+	{
+	  	// Определяем текущие координаты указателя мыши
+		var x = e.pageX - Canvas3.offsetLeft;
+		var y = e.pageY - Canvas3.offsetTop;
+		
+		// Рисуем линию до новой координаты
+		cCanvas3.lineTo(x, y);
+		cCanvas3.stroke();
+	}
+}
+
+function stopDrawing() {
+    isDrawing = false;	
+}
+
+function clearCanvas() {
+	cCanvas3.clearRect(0, 0, Canvas3.width, Canvas3.height);
 }
 
 function writeFooter() {
