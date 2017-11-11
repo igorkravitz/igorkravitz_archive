@@ -194,6 +194,19 @@ function clearCanvas() {
 	cCanvas3.clearRect(0, 0, Canvas3.width, Canvas3.height);
 }
 
+function saveCanvas() {
+    // Находим элемент <img>
+	var imageCopy = document.getElementById("savedImageCopy");
+	
+	// Отображаем данные холста в элементе <img>
+	imageCopy.src = Canvas3.toDataURL();
+	
+	// Показываем элемент <div>, делая изображение видимым
+	// делая изображение видимым
+	var imageContainer = document.getElementById("savedCopyContainer");
+    imageContainer.style.display = "block";
+}
+
 function writeFooter() {
 	var datePub = new Date();
 	var options = {
