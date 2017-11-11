@@ -1,10 +1,12 @@
 var video;
 var display;
+var isDrawing;
 
 window.onload = function() {
 	video = document.getElementById("videoPlayer");
 	drawningCanvas1();
 	drawningCanvas2();
+       	drawningCanvas3();
 };
 
 function drawningCanvas1() {
@@ -132,8 +134,7 @@ function drawningCanvas3() {
 
 var previousColorElement;
 
-function changeColor(color, imgElement)
-{
+function changeColor(color, imgElement){
     // 	Меняем текущий цвет рисования
 	cCanvas3.strokeStyle = color;
 	
@@ -150,8 +151,7 @@ function changeColor(color, imgElement)
 //Отслеживаем элемент <img> для толщины линии, по которому ранее щелкнули
 var previousThicknessElement;
 
-function changeThickness (thickness, imgElement)
-{
+function changeThickness (thickness, imgElement){
     // Изменяем текущую толщину линии
 	cCanvas3.lineWidth = thickness;
 	
@@ -165,7 +165,6 @@ function changeThickness (thickness, imgElement)
 	previousThicknessElement = imgElement;
 }
 
-var isDrawing;
 
 function startDrawing(e) {
 	// Начинаем рисовать
@@ -206,7 +205,7 @@ function writeFooter() {
 			  month: 'long',
 			  day: 'numeric',
 			  weekday: 'long',
-			  timezone: 'UTC',
+			  timezone: 'UTC'
 			};
 	document.write(
 	"<footer>" +
@@ -237,7 +236,7 @@ function writeNav() {
 		'Questionary.html':'Анкета',
 		'Media.html':'Медиа',
 		'Canvas.html':'Холст'
-	}
+	};
 	document.write(
 			"<nav>" +
 				"<ul type='disc'>"
