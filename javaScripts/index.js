@@ -1,12 +1,14 @@
 var video;
 var display;
 var isDrawing;
+var cCanvas3;
+var Canvas3;
 
 window.onload = function() {
 	video = document.getElementById("videoPlayer");
-	drawningCanvas1();
-	drawningCanvas2();
-       	drawningCanvas3();
+//	drawningCanvas1();
+//	drawningCanvas2();
+        drawningCanvas3();
 };
 
 function drawningCanvas1() {
@@ -116,20 +118,16 @@ function drawningCanvas2() {
 	   
 }
 
-var cCanvas3;
-var Canvas3;
-
 function drawningCanvas3() {
 	Canvas3 = document.getElementById("drawingCanvas3");
 	cCanvas3 = Canvas3.getContext("2d");
 	// Код для рисования вставляется сюда
 	
 	// Подключаем требуемые для рисования события
-	cCanvas3.onmousedown = startDrawing;
-	cCanvas3.onmouseup = stopDrawing;
-	cCanvas3.onmouseout = stopDrawing;
-	cCanvas3.onmousemove = draw;
-	   
+	Canvas3.onmousedown = startDrawing;
+	Canvas3.onmouseup = stopDrawing;
+	Canvas3.onmouseout = stopDrawing;
+	Canvas3.onmousemove = draw; 
 }
 
 var previousColorElement;
@@ -169,16 +167,14 @@ function changeThickness (thickness, imgElement){
 function startDrawing(e) {
 	// Начинаем рисовать
 	isDrawing = true;
-	
 	// Создаем новый путь (с текущим цветом и толщиной линии) 
 	cCanvas3.beginPath();
-	
 	// Нажатием левой кнопки мыши помещаем "кисть" на холст
 	cCanvas3.moveTo(e.pageX - Canvas3.offsetLeft, e.pageY - Canvas3.offsetTop);
 }
 
 function draw(e) {
-	if (isDrawing == true)
+	if (isDrawing === true)
 	{
 	  	// Определяем текущие координаты указателя мыши
 		var x = e.pageX - Canvas3.offsetLeft;
@@ -299,7 +295,7 @@ function CalculateFunction(number1, number2, nameElement) {
 	res = number1 + number2;
 	// console.log(res);
 	// debugger;
-	if (res == 0) {
+	if (res === 0) {
 		document.getElementById(nameElement).innerHTML = "";
 	} else {
 		document.getElementById(nameElement).innerHTML = number1 + number2;

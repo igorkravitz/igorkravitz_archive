@@ -5,6 +5,32 @@ article, aside, figure, figcaption, footer, header, hgroup, nav, section,
 	display: block;
 }
 
+.Content {
+  font-size: medium;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  padding-left: 50px;
+  padding-right: 50px;
+  line-height: 120%;
+}
+
+.Content .LeadIn {
+  font-weight: bold;
+  font-size: large;
+  font-variant: small-caps;
+}
+
+.Content h2 {
+  color: #24486C;
+  margin-bottom: 2px;
+  font-size: medium;
+}
+
+.Content p {
+  margin-top: 0px;
+}
+
 .photo {
 /* 	text-align: right; */
 /* 	margin: 200px; */
@@ -253,4 +279,55 @@ input[type=button] {
 input[type=reset] {
 	width: 100px;
 	/*   padding: 10px; */
+}
+
+.barContainer {
+        border: solid 1px black;
+	width: 600px;
+	margin-bottom: 5px;
+}
+
+.vcard {
+
+}
+
+
+.title {
+
+}
+
+.fn {
+
+}
+
+.nickname {
+
+}
+
+.org {
+
+}
+
+.tel {
+
+}
+
+.street-address {
+
+}
+
+.locality {
+
+}
+
+.postal-code {
+
+}
+
+.country-name {
+
+}
+
+.url {
+
 }
