@@ -91,6 +91,7 @@ img.Selected {
 
 #savedCopyContainer {
     display: none;
+    height: 227px;
 }
 
 #savedCopyContainer img {
