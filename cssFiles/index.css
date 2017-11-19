@@ -100,6 +100,12 @@ img.Selected {
 
 .emptyblock {
 	height: 300px;
+        clear: both;
+}
+
+.emptyblock_both {
+        clear: both;
+        height: 5px;
 }
 
 #positionBar {

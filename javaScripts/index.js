@@ -8,7 +8,7 @@ window.onload = function() {
 	video = document.getElementById("videoPlayer");
 //	drawningCanvas1();
 //	drawningCanvas2();
-        drawningCanvas3();
+//      drawningCanvas3();
 };
 
 function drawningCanvas1() {
@@ -130,6 +130,322 @@ function drawningCanvas3() {
 	Canvas3.onmousemove = draw; 
 }
 
+function drawningCanvas4() {
+    // Определение контекста рисования
+    canvas = document.getElementById("drawingCanvas4");
+    context = canvas.getContext("2d");
+
+    // Рисуем прямоугольник с тенью
+    context.rect(20, 20, 200, 100);
+    context.fillStyle = "#8ED6FF";
+    context.shadowColor = "#bbbbbb";
+    context.shadowBlur = 20;
+    context.shadowOffsetX = 15;
+    context.shadowOffsetY = 15;
+    context.fill();
+
+    // Рисуем три строчки текста с тенью
+    context.textBaseline = "top";
+    context.font = "bold 20px Arial";
+
+    context.shadowBlur = 3;
+    context.shadowOffsetX = 2;
+    context.shadowOffsetY = 2;
+    context.fillStyle = "steelblue";
+    context.fillText("Едва различимая, слегка старомодная тень.", 10, 175);
+
+    context.shadowBlur = 5;
+    context.shadowOffsetX = 20;
+    context.shadowOffsetY = 20;
+    context.fillStyle = "green";
+    context.fillText("Здесь используется \"далекая\" тень...", 10, 225);
+
+    context.shadowBlur = 15;
+    context.shadowOffsetX = 0;
+    context.shadowOffsetY = 0;
+    context.shadowColor = "black";
+    context.fillStyle = "white";
+    context.fillText("Эта тень не смещена от исходного изображения и создает эффект ореола.", 10, 300);
+
+    // Рисуем звезду с тенью (загрузка из изображения)
+    context.shadowOffsetX = 10;
+    context.shadowOffsetY = 10;
+    context.shadowColor = "#bbbbbb";
+    context.shadowBlur = 4;
+
+    var img = new Image();
+    img.onload = function() {
+            context.drawImage(img, 250, 30);
+    };
+    img.src = "http://professorweb.ru/downloads/star.png";
+}
+
+function drawningCanvas5() {
+    canvas = document.getElementById("drawingCanvas5");
+    context = canvas.getContext("2d");
+    var img = new Image();
+    img.onload = function() {
+    context.drawImage(img, 250, 30);
+    var pattern = context.createPattern(img, "repeat");
+    context.fillStyle = pattern; 
+    context.rect(0, 0, canvas.width, canvas.height);
+    context.fill();
+    };
+img.src = "http://professorweb.ru/downloads/brick_tile.gif";
+}
+
+var circles = [];
+var canvas6;
+var context6;
+function drawningCanvas6() {
+    canvas6 = document.getElementById("drawingCanvas6");
+    context6 = canvas6.getContext("2d");
+    canvas6.onmousedown = canvasClick;   
+    canvas6.onmouseup = stopDragging;
+    canvas6.onmouseout = stopDragging;
+    canvas6.onmousemove = dragCircle;
+}
+
+var previousSelectedCircle;
+
+function canvasClick(e) {
+  // Получаем координаты точки холста, в которой щелкнули
+  var clickX = e.pageX - canvas6.offsetLeft;
+  var clickY = e.pageY - canvas6.offsetTop;
+
+  // Проверяем, щелкнули ли no кругу
+  for(var i=circles.length-1; i>=0; i--) {
+    var circle = circles[i];
+
+    // С помощью теоремы Пифагора вычисляем расстояние от 
+	// точки, в которой щелкнули, до центра текущего круга
+    var distanceFromCenter = Math.sqrt(Math.pow(circle.x - clickX, 2) + Math.pow(circle.y - clickY, 2));
+	
+	// Определяем, находится ли точка, в которой щелкнули, в данном круге
+    if (distanceFromCenter <= circle.radius) {
+	  // Сбрасываем предыдущий выбранный круг	
+      if (previousSelectedCircle != null) previousSelectedCircle.isSelected = false;
+      previousSelectedCircle = circle;
+
+      // Устанавливаем новый выбранный круг и обновляем холст
+      circle.isSelected = true;
+      drawCircles();
+      isDragging = true;
+      return;  
+        // Прекращаем проверку
+//        return;
+    }
+  }
+} 
+
+var isDragging = false;
+
+function stopDragging() {
+  isDragging = false;
+}
+
+function dragCircle(e) {
+  // Проверка возможности перетаскивания
+  if (isDragging == true) {
+    // Проверка попадания
+    if (previousSelectedCircle != null) {
+      // Сохраняем позицию мыши
+      var x = e.pageX - canvas6.offsetLeft;
+      var y = e.pageY - canvas6.offsetTop;
+
+      // Перемещаем круг в новую позицию
+      previousSelectedCircle.x = x;
+      previousSelectedCircle.y = y;
+
+      // Обновляем холст
+      drawCircles();
+    }
+  }
+}
+// Пользовательский объект Circle 
+function Circle(x, y, radius, color) {
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+    this.color = color;
+    this.isSelected = false;
+}
+
+function addRandomCircle() {
+    // Устанавливаем произвольный размер и позицию круга
+    var radius = randomFromTo(10, 60);
+    var x = randomFromTo(0, canvas.width);
+    var y = randomFromTo(0, canvas.height);
+
+    // Окрашиваем круг произвольным цветом
+    var colors = ["green", "blue", "red", "yellow", "magenta", "orange", "brown", "purple", "pink"];
+    var color = colors[randomFromTo(0, 8)];
+
+    // Создаем новый круг
+    var circle = new Circle(x, y, radius, color);
+
+    // Сохраняем его в массиве
+    circles.push(circle);
+
+    // Обновляем отображение круга
+    drawCircles();
+}
+
+function randomFromTo(from, to) {
+  return Math.floor(Math.random() * (to - from + 1) + from);
+}
+
+function drawCircles() {
+    // Очистить холст
+    context6.clearRect(0, 0, canvas6.width, canvas6.height);
+    // Перебираем все круги
+    for(var i=0; i<circles.length; i++) {
+        var circle = circles[i];
+
+        // Рисуем текущий круг
+        context6.globalAlpha = 0.85;
+        context6.beginPath();
+        context6.arc(circle.x, circle.y, circle.radius, 0, Math.PI*2);
+        context6.fillStyle = circle.color;
+        context6.strokeStyle = "black";
+
+        // Выделяем выбранный круг рамкой (потребуется позже)
+        if (circle.isSelected) {
+            context6.lineWidth = 5;
+        }
+        else {
+            context6.lineWidth = 1;
+        }
+        context6.fill();
+        context6.stroke(); 
+    }
+}
+
+function clearCanvas6() {
+    // Очистить массив
+    circles = [];
+    // Очистить холст
+    drawCircles();
+}
+
+var canvas7;
+var context7;
+function drawningCanvas7() {
+    canvas7 = document.getElementById("drawingCanvas7");
+    context7 = canvas7.getContext("2d");
+    canvas7.onmousedown = canvas7Click;
+    // Обновляем холст через 0.02 секунды
+    setTimeout("drawFrame()", 20);
+//    canvas7.onmousedown = canvasClick;   
+//    canvas6.onmouseup = stopDragging;
+//    canvas6.onmouseout = stopDragging;
+//    canvas6.onmousemove = dragCircle;
+}
+
+// Тип данных, представляющий отдельный мячик
+function Ball(x, y, dx, dy, radius) {
+    this.x = x;
+    this.y = y;
+    this.dx = dx;
+    this.dy = dy;
+    this.radius = radius;
+    this.strokeColor = "black";
+    this.fillColor = "red";
+}
+
+// Массив, содержащий информацию обо всех мячиках на холсте
+var balls = [];
+
+function addBall() {
+    // Устанавливаем размер мячика
+    var radius = parseFloat(document.getElementById("ballSize").value);
+
+    // Создаем новый мячик
+    var ball = new Ball(50,50,1,1,radius);
+
+    // Сохраняем его в массиве
+    balls.push(ball);
+}
+
+function clearBalls() {
+  // Удаляем все мячики
+  balls = [];
+}
+
+function drawFrame() {
+    // Очистить холст
+    context7.clearRect(0, 0, canvas7.width, canvas7.height);
+
+    // Вызываем метод beginPath(), чтобы убедиться,
+    // что мы не рисуем часть уже нарисованного содержимого холста
+    context7.beginPath();
+
+    // Перебираем все мячики
+    for(var i=0; i<balls.length; i++) {
+        // Перемещаем каждый мячик в его новую позицию
+        var ball = balls[i];
+        ball.x += ball.dx;
+        ball.y += ball.dy;
+
+        // Добавляем эффект "гравитации", который ускоряет падение мячика
+        if ((ball.y) < canvas7.height) ball.dy += 0.22;
+
+        // Добавляем эффект "трения", который замедляет движение мячика
+        ball.dx = ball.dx * 0.998;
+
+        // Если мячик натолкнулся на край холста, отбиваем его
+        if ((ball.x + ball.radius > canvas7.width) || (ball.x - ball.radius < 0)) {
+            ball.dx = -ball.dx;
+        }
+
+        // Если мячик упал вниз, отбиваем его, но слегка уменьшаем скорость
+        if ((ball.y + ball.radius > canvas7.height) || (ball.y - ball.radius < 0)) { 
+            ball.dy = -ball.dy*0.96; 
+        }
+
+        // Проверяем, хочет ли пользователь соединительные линии
+        if (!document.getElementById("connectedBalls").checked) {
+            context7.beginPath();
+            context7.fillStyle = ball.fillColor;
+        }
+        else {
+            context7.fillStyle = "white";
+        }
+
+        // Рисуем мячик
+        context7.arc(ball.x, ball.y, ball.radius, 0, Math.PI*2);
+        context7.lineWidth = 1;
+        context7.fill();
+        context7.stroke(); 
+    }
+
+    // Рисуем следующий кадр через 20 миллисекунд
+    setTimeout("drawFrame()", 20);
+}
+
+function canvas7Click(e) {
+  // Координаты щелчка мышью
+  var clickX = e.pageX - canvas7.offsetLeft;
+  var clickY = e.pageY - canvas7.offsetTop;
+
+  for(var i in balls)
+  {
+    var ball = balls[i];
+	
+	// Проверка попадания
+    if ((clickX > (ball.x-ball.radius)) && (clickX < (ball.x+ball.radius)))
+    {
+      if ((clickY > (ball.y-ball.radius)) && (clickY < (ball.y+ball.radius)))
+      {
+        // Изменить скорость мячика
+        ball.dx -= 2;
+        ball.dy -= 3;
+        return;
+      }
+    }
+  }
+}
+
 var previousColorElement;
 
 function changeColor(color, imgElement){
@@ -192,6 +508,8 @@ function stopDrawing() {
 
 function clearCanvas() {
 	cCanvas3.clearRect(0, 0, Canvas3.width, Canvas3.height);
+        var imageContainer = document.getElementById("savedCopyContainer");
+    imageContainer.style.display = "none";
 }
 
 function saveCanvas() {
