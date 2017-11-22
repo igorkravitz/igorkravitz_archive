@@ -11,6 +11,15 @@ var Canvas3;
 ////      drawningCanvas3();
 //};
 
+function storageChanged(e) {
+    var message = document.getElementById("updateMessage");
+    message.innerHTML = "Обновление локального хранилища.";
+    message.innerHTML += "<br>Ключ: " + e.key;
+    message.innerHTML += "<br>Старое значение: " + e.oldValue;
+    message.innerHTML += "<br>Новое значение: " + e.newValue;
+    message.innerHTML += "<br>URL: " + e.url;
+}
+
 function getVideoPlayer(){
     video = document.getElementById("videoPlayer");
 }
@@ -718,7 +727,8 @@ function writeNav() {
         'Calc.html': 'Калькулятор',
         'Questionary.html': 'Анкета',
         'Media.html': 'Медиа',
-        'Canvas.html': 'Холст'
+        'Canvas.html': 'Холст',
+        'WebStorage.html': 'Веб-хранилище'
     };
     document.write(
             "<nav>" +
@@ -816,4 +826,98 @@ function validateComments(input) {
 
 function onChangeAge(input) {
     document.getElementById("labelAge").innerHTML = "Возраст * " + input.value;
+}
+
+function saveData() {
+    // Получаем значения текстовых полей
+    var localData = document.getElementById("localData").value;
+    var sessionData = document.getElementById("sessionData").value;
+
+    // Сохраняем текст, введенный в текстовом поле, в локальном хранилище
+    localStorage["localData"] = localData;
+    
+    // Сохраняем текст, введенный в текстовом поле, в хранилище сессий
+    sessionStorage["sessionData"] = sessionData;
+}
+
+function loadData() {
+    // Загружаем сохраненные данные из хранилищ
+    var localData = localStorage["localData"];    
+    var sessionData = sessionStorage["sessionData"];
+
+    // Отображаем эти данные в текстовых полях
+    if (localData != null) {
+        document.getElementById("localData").value = localData;
+    }
+    if (sessionData != null) {
+        document.getElementById("sessionData").value = sessionData;
+    }
+}
+
+function clearData(){
+    document.getElementById("localData").value = null;
+    document.getElementById("sessionData").value = null;
+}
+
+function findAllItems() {
+  // Получаем элемент <ul> для списка элементов данных
+  var itemList = document.getElementById("itemList");
+  
+  // Очищаем список
+  itemList.innerHTML = "";
+
+  // Перебираем все элементы данных в цикле
+  for (var i=0; i<localStorage.length; i++) {
+	// Получаем ключ текущего элемента
+    var key = localStorage.key(i);
+	
+    // Получаем сам элемент, хранящийся под этим ключом
+    var item = localStorage[key];
+
+    // Заполняем список
+    var newItem = document.createElement("li");
+    newItem.innerHTML = key + ": " + item;
+    itemList.appendChild(newItem);
+  }
+}
+
+function generateLocalData(){
+    localStorage.username = "Igor";
+    localStorage.password = "12345";
+    localStorage.work = "programmer";
+    localStorage.lang = "JavaScript";
+}
+
+// Определяем тип данных UserInfo
+function UserInfo(name, family, age, login) {
+	this.name = name;
+	this.family = family;
+	this.age = age;
+	this.login = login;
+}
+
+function getObjectInfo(){
+    // Создаем объект UserInfo
+    var user = new UserInfo("Игорь", "Кравец", 34, "igor.kravitz");
+
+    // Сохраняем этот объект в формате JSON
+    sessionStorage.userinfo = JSON.stringify(user);
+
+    // Для проверки
+    user = null;
+
+    // Преобразуем JSON-текст в соответствующий объект
+    user = JSON.parse(sessionStorage.userinfo);
+
+    alert("Привет " + user.name + " " + user.family);
+}
+
+function addValue() {
+    // Получаем значения из обоих текстовых полей
+    var key = document.getElementById("key").value;
+    var item = document.getElementById("item").value;
+
+    // Сохраняем элемент в локальном хранилище.
+    // Если ключ уже существует, новый элемент заменяет старый
+    localStorage[key] = item;
 }

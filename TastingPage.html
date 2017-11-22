@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Обучение HTML</title>
+        <link rel="stylesheet" href="cssFiles/index.css" type="text/css"/>
+        <script type="text/javascript" src="javaScripts\index.js"></script>
+        <script>
+            window.onload = function () {
+                // Подключаем событие onstorage к функции storageChanged
+                window.addEventListener("storage", storageChanged, false);
+            };
+        </script>
+    </head>
+    <body>
+        <article>
+            <header role="banner">
+                <script type="text/javascript">
+                    writeNav();
+                </script>
+                <hgroup>
+                    <h1>Тестовая страница</h1>
+                    <h1 class="Teaser">Отображение изменений данных веб-хранилища</h1>
+                </hgroup>
+                <p class="Byline"></p>
+            </header>
+            <div id="updateMessage"></div>
+            <div class="emptyblock"></div>
+            <script type="text/javascript">
+                writeFooter();
+            </script>
+        </article>
+    </body>
+</html>
