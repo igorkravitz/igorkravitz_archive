@@ -1,97 +1,111 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Обучение HTML</title>
-<link rel="stylesheet" href="cssFiles/index.css" type="text/css"/>
-<script type="text/javascript" src="javaScripts\index.js"></script>
-<!--[if lt IE 9]
-      <script type="text/javascript" src="javaScripts\excanvas.js"></script>
-<![endif]-->
-<!--<script src="jquery-1.3.2.min.js"></script>-->
-<!--<script src="oomph.js"></script>-->
-</head>
-<body>
-	<article>
-		<header role="banner">
-			<script type="text/javascript">
-				writeNav();
-			</script>
-			<hgroup>
-				<h1>Холст</h1>
-				<h1 class="Teaser">Пример создания холста</h1>
-			</hgroup>
-			<p class="Byline"></p>
-		</header>
-		<canvas id="drawingCanvas1" width="500" height="300"></canvas>
-                <script type="text/javascript">drawningCanvas1();</script>
-		<canvas id="drawingCanvas2" width="500" height="300"></canvas>
-                <script type="text/javascript">drawningCanvas2();</script>
-                <div class="CanvasContainer">
-                    <canvas id="drawingCanvas3" width="500" height="300"></canvas>
-                    <script type="text/javascript">drawningCanvas3()</script> 
-                    <div class="Toolbar">
-                        - Операции-<br>
-                        <button onclick="saveCanvas()">Сохранить содержимое Canvas</button>
-                        <button onclick="clearCanvas()">Очистить Canvas</button>
-                        <div id="savedCopyContainer">
-                            <img alt="" id="savedImageCopy" src="media\photo igor small.jpg"><br> Щелкните правой кнопкой
-                                мыши для сохранения ...
-                        </div>
-                    </div>                    
-                </div>                
+    <head>
+        <meta charset="UTF-8">
+        <title>Обучение HTML</title>
+        <link rel="stylesheet" href="cssFiles/index.css" type="text/css"/>
+        <script type="text/javascript" src="javaScripts\index.js"></script>
+        <!--[if lt IE 9]
+              <script type="text/javascript" src="javaScripts\excanvas.js"></script>
+        <![endif]-->
+        <!--<script src="jquery-1.3.2.min.js"></script>-->
+        <!--<script src="oomph.js"></script>-->
+    </head>
+    <body>
+        <article>
+            <header role="banner">
+                <script type="text/javascript">
+                    writeNav();
+                </script>
+                <hgroup>
+                    <h1>Холст</h1>
+                    <h1 class="Teaser">Пример создания холста</h1>
+                </hgroup>
+                <p class="Byline"></p>
+            </header>
+            <canvas id="drawingCanvas1" width="500" height="300"></canvas>
+            <script type="text/javascript">drawningCanvas1();</script>
+            <canvas id="drawingCanvas2" width="500" height="300"></canvas>
+            <script type="text/javascript">drawningCanvas2();</script>
+            <div class="CanvasContainer">
+                <canvas id="drawingCanvas3" width="500" height="300"></canvas>
+                <script type="text/javascript">drawningCanvas3()</script> 
                 <div class="Toolbar">
-			- Цвет -<br> <img id="redPen"
-				src="http://professorweb.ru/downloads/pen_red.gif"
-				alt="Красная кисть" onclick="changeColor('rgb(212,21,29)', this)">
-			<img id="greenPen"
-				src="http://professorweb.ru/downloads/pen_green.gif"
-				alt="Зеленая кисть" onclick="changeColor('rgb(131,190,61)', this)">
-			<img id="bluePen" src="http://professorweb.ru/downloads/pen_blue.gif"
-				alt="Синяя кисть" onclick="changeColor('rgb(0,86,166)', this)">
-                </div>
-		<div class="Toolbar">
-			- Толщина -<br> <img
-				src="http://professorweb.ru/downloads/pen_thin.gif"
-				alt="Тонкая кисть" onclick="changeThickness(1, this)"> <img
-				src="http://professorweb.ru/downloads/pen_medium.gif"
-				alt="Нормальная кисть" onclick="changeThickness(5, this)"> <img
-				src="http://professorweb.ru/downloads/pen_thick.gif"
-				alt="Толстая кисть" onclick="changeThickness(10, this)">
-		</div>
-                <div class="emptyblock_both"></div>
-                <canvas id="drawingCanvas4" width="900" height="350"></canvas>
-                <script type="text/javascript">drawningCanvas4();</script>
-                <div class="emptyblock_both"></div>
-                <canvas id="drawingCanvas5" width="900" height="350"></canvas>
-                <script type="text/javascript">drawningCanvas5();</script>
-                <div class="emptyblock_both"></div>
-                <div class="CanvasContainer">
-                    <canvas id="drawingCanvas6" width="700" height="500"></canvas>
-                    <script type="text/javascript">drawningCanvas6()</script>
-                </div>
-                <div>
-                     <button onclick="addRandomCircle()">Добавить круг</button>
-                     <button onclick="clearCanvas6()">Очистить холст</button>
-                </div>
-                <div class="emptyblock_both"></div>
-                <div class="CanvasContainer">
-                    <canvas id="drawingCanvas7" width="500" height="340"></canvas>
-                    <script type="text/javascript">drawningCanvas7()</script>
-                </div>
-                <div>
-                    <button onclick="addBall()">Добавить мячик</button>
-                    <button onclick="clearBalls()">Очистить холст</button>
-                </div>
-                <div class="emptyblock_both"></div>
-                <div>
-                    Размер мячика:<input id="ballSize" type="number" min="0" max="50" value="15">
-                    <input id="connectedBalls" type="checkbox">Добавить соединяющие линии<br>
-                </div>
-		<div class="emptyblock"></div>
-		<script type="text/javascript">
-			writeFooter();
-		</script>
-	</article>
-</body>
+                    - Операции-<br>
+                    <button onclick="saveCanvas()">Сохранить содержимое Canvas</button>
+                    <button onclick="clearCanvas()">Очистить Canvas</button>
+                    <div id="savedCopyContainer">
+                        <img alt="" id="savedImageCopy" src="media\photo igor small.jpg"><br> Щелкните правой кнопкой
+                        мыши для сохранения ...
+                    </div>
+                </div>                    
+            </div>                
+            <div class="Toolbar">
+                - Цвет -<br> <img id="redPen"
+                                  src="http://professorweb.ru/downloads/pen_red.gif"
+                                  alt="Красная кисть" onclick="changeColor('rgb(212,21,29)', this)">
+                <img id="greenPen"
+                     src="http://professorweb.ru/downloads/pen_green.gif"
+                     alt="Зеленая кисть" onclick="changeColor('rgb(131,190,61)', this)">
+                <img id="bluePen" src="http://professorweb.ru/downloads/pen_blue.gif"
+                     alt="Синяя кисть" onclick="changeColor('rgb(0,86,166)', this)">
+            </div>
+            <div class="Toolbar">
+                - Толщина -<br> <img
+                    src="http://professorweb.ru/downloads/pen_thin.gif"
+                    alt="Тонкая кисть" onclick="changeThickness(1, this)"> <img
+                    src="http://professorweb.ru/downloads/pen_medium.gif"
+                    alt="Нормальная кисть" onclick="changeThickness(5, this)"> <img
+                    src="http://professorweb.ru/downloads/pen_thick.gif"
+                    alt="Толстая кисть" onclick="changeThickness(10, this)">
+            </div>
+            <div class="emptyblock_both"></div>
+            <canvas id="drawingCanvas4" width="900" height="350"></canvas>
+            <script type="text/javascript">drawningCanvas4();</script>
+            <div class="emptyblock_both"></div>
+            <canvas id="drawingCanvas5" width="900" height="350"></canvas>
+            <script type="text/javascript">drawningCanvas5();</script>
+            <div class="emptyblock_both"></div>
+            <div class="CanvasContainer">
+                <canvas id="drawingCanvas6" width="700" height="500"></canvas>
+                <script type="text/javascript">drawningCanvas6()</script>
+            </div>
+            <div>
+                <button onclick="addRandomCircle()">Добавить круг</button>
+                <button onclick="clearCanvas6()">Очистить холст</button>
+            </div>
+            <div class="emptyblock_both"></div>
+            <div class="CanvasContainer">
+                <canvas id="drawingCanvas7" width="500" height="340"></canvas>
+                <script type="text/javascript">drawningCanvas7()</script>
+            </div>
+            <div>
+                <button onclick="addBall()">Добавить мячик</button>
+                <button onclick="clearBalls()">Очистить холст</button>
+            </div>
+            <div class="emptyblock_both"></div>
+            <div>
+                Размер мячика:<input id="ballSize" type="number" min="0" max="50" value="15">
+                <input id="connectedBalls" type="checkbox">Добавить соединяющие линии<br>
+            </div>
+            <div class="emptyblock_both"></div>
+            <!--<a href="Canvas_8.html">Лабиринт</a>-->
+            <div class="CanvasContainer">
+                <canvas id="drawingCanvas8" style="border: 6px double black;background: white"></canvas>
+                <script type="text/javascript">drawningCanvas8()</script>
+            </div>
+            <div>
+                <button onclick="loadHard()">Сложный лабиринт</button>
+                <button onclick="loadEasy()">Простой лабиринт</button>
+            </div>
+            <div>
+                <p>Используй стрелки или 'A','W','S','D'</p>
+            </div>
+            <img id="face" alt="" src="media/face.png" style="display: none">
+            <div class="emptyblock"></div>
+            <script type="text/javascript">
+                writeFooter();
+            </script>
+        </article>
+    </body>
 </html>

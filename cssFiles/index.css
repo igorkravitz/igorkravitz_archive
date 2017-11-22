@@ -66,12 +66,18 @@ body {
     font-size: 12px;
 }
 
+button {
+    padding: 8px;
+  }
+
 .CanvasContainer {
     clear: both;
 }
 
 canvas {
     border: 1px solid #7B899B;
+/*    border: 6px double black;
+    background: white;*/
 }
 
 img {
@@ -91,7 +97,7 @@ img.Selected {
 
 #savedCopyContainer {
     display: none;
-    height: 227px;
+    height: 226px;
 }
 
 #savedCopyContainer img {
