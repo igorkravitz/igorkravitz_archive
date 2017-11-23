@@ -37,7 +37,7 @@
             <div class="emptyblock_both"></div>
             <button onclick="getObjectInfo()">Содержимое объекта хранилища сессии</button>
             <div class="emptyblock_both"></div>
-             <fieldset>
+            <fieldset>
                 <legend>Реагирование на изменения в хранилище</legend>
                 <label for="key">Ключ:</label>
                 <input id="key"><br>
@@ -48,6 +48,21 @@
                 <div class="emptyblock_both"></div>
                 <a href="TastingPage.html" target="_blank">Контрольная страница изменений (будет открыта в новой вкладке)</a>
             </fieldset>
+            <div class="emptyblock_both"></div>
+            <input id="fileInput" type="file" size="50" onchange="processFiles(this.files)">
+            <button onclick="showFileInput()">Добавить файл</button>
+            <div class="emptyblock_both"></div>
+            <div id="fileOutput"></div>
+            <div class="emptyblock_both"></div>
+            <div id="dropBox">
+                <div>Перетащите изображение сюда...</div>
+                <script type="text/javascript">
+                    initDropBox();
+                </script>
+            </div>
+            <input id="fileInput" type="file" onchange="processFiles(this.files)">
+            <img id="thumbnail">
+            
             <div class="emptyblock"></div>
             <script type="text/javascript">
                 writeFooter();

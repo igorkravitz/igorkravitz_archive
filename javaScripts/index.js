@@ -489,7 +489,7 @@ function drawningCanvas8() {
         if (savedFileName != null)
             fileName = savedFileName;
     }
-    drawMaze("./media/"+fileName, x, y);
+    drawMaze("./media/" + fileName, x, y);
 
     // При нажатии клавиши вызываем функцию processKey()
     window.onkeydown = processKey;
@@ -505,9 +505,9 @@ function saveXY(e) {
 //         Выводим запрос о сохранении состояния
 //        if (confirm("Вы хотите сохранить позицию значка, \n" +
 //                "чтобы загрузить ее при следующем входе в игру?")) {
-            localStorage["mazeGame_currentX"] = x;
-            localStorage["mazeGame_currentY"] = y;
-            localStorage["fileName"] = fileName;
+        localStorage["mazeGame_currentX"] = x;
+        localStorage["mazeGame_currentY"] = y;
+        localStorage["fileName"] = fileName;
 //        }
     }
 }
@@ -960,3 +960,68 @@ function addValue() {
     // Если ключ уже существует, новый элемент заменяет старый
     localStorage[key] = item;
 }
+
+function processFiles(files) {
+    var file = files[0];
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        // Когда это событие активируется, данные готовы.
+        // Вставляем их в страницу в элемент <div>
+        var output = document.getElementById("fileOutput");
+        output.textContent = e.target.result;
+    };
+    reader.readAsText(file);
+}
+
+function showFileInput() {
+    var fileInput = document.getElementById("fileInput");
+    fileInput.click();
+}
+
+function initDropBox() {
+    dropBox = document.getElementById("dropBox");
+    dropBox.ondragenter = ignoreDrag;
+    dropBox.ondragover = ignoreDrag;
+    dropBox.ondrop = drop;
+}
+
+function ignoreDrag(e) {
+  // Обеспечиваем, чтобы никто другой не получил это событие, 
+  // т.к. мы выполняем операцию перетаскивания
+  e.stopPropagation();
+  e.preventDefault();
+}
+
+function drop(e) {
+  // Аннулируем это событие для всех других
+  e.stopPropagation();
+  e.preventDefault();
+ 
+  // Получаем перемещенные файлы
+  var data = e.dataTransfer;
+  var files = data.files;
+	 
+  // Передаем полученный файл функции для обработки файлов
+  processFiles2(files);
+}
+
+function processFiles2(files) {
+  var file = files[0];
+  
+  var reader = new FileReader();
+
+  reader.onload = function (e) {
+    // Используем URL изображения для заполнения фона
+	dropBox.style.backgroundImage = "url('" + e.target.result + "')";
+  };
+  
+  // Начинаем считывать изображение
+  reader.readAsDataURL(file);
+}
+
+
+
+
+
+
+
