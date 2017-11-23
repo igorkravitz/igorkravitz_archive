@@ -20,7 +20,7 @@ function storageChanged(e) {
     message.innerHTML += "<br>URL: " + e.url;
 }
 
-function getVideoPlayer(){
+function getVideoPlayer() {
     video = document.getElementById("videoPlayer");
 }
 
@@ -461,54 +461,91 @@ function canvas7Click(e) {
 
 var canvas8;
 var context8;
+// Отслеживаем текущую позицию значка
+var x = 0;
+var y = 0;
+var fileName;
+
 function drawningCanvas8() {
     canvas8 = document.getElementById("drawingCanvas8");
     context8 = canvas8.getContext("2d");
     // Рисуем фон лабиринта
-    drawMaze("./media/maze.png", 268, 5);
+    // Возможность локального хранилища поддерживается?
+    x = 268;
+    y = 5;
+    fileName = "maze.png";
+    if (localStorage) {
+        // Пытаемся получить данные
+        var savedX = localStorage["mazeGame_currentX"];
+        var savedY = localStorage["mazeGame_currentY"];
+        var savedFileName = localStorage["fileName"];
+        // При нулевых значениях переменных не считываем никаких данных. 
+        // В противном случае устанавливаем новые координаты 
+        // по сохраненным данным
+        if (savedX != null)
+            x = Number(savedX);
+        if (savedY != null)
+            y = Number(savedY);
+        if (savedFileName != null)
+            fileName = savedFileName;
+    }
+    drawMaze("./media/"+fileName, x, y);
 
     // При нажатии клавиши вызываем функцию processKey()
     window.onkeydown = processKey;
+//    window.addEventListener("beforeunload","saveXY");
+    window.onbeforeunload = saveXY;
 }
 
-// Отслеживаем текущую позицию значка
-var x = 0;
-var y = 0;
+function saveXY(e) {
+    // Проверяем, существует ли объект localStorage (т.к. нет смысла 
+    // предлагать сохранять состояние, если мы не сможем это сделать)
+    if (localStorage)
+    {
+//         Выводим запрос о сохранении состояния
+//        if (confirm("Вы хотите сохранить позицию значка, \n" +
+//                "чтобы загрузить ее при следующем входе в игру?")) {
+            localStorage["mazeGame_currentX"] = x;
+            localStorage["mazeGame_currentY"] = y;
+            localStorage["fileName"] = fileName;
+//        }
+    }
+}
 
 // Таймер, включающий и отключающий новый лабиринт в любое время
 var timer;
 
 function drawMaze(mazeFile, startingX, startingY) {
-  // Остановить таймер (если запущен)
-  clearTimeout(timer);
+    // Остановить таймер (если запущен)
+    clearTimeout(timer);
 
-  // Остановить перемещение значка
-  dx = 0;
-  dy = 0;
+    // Остановить перемещение значка
+    dx = 0;
+    dy = 0;
 
-  // Загружаем изображение лабиринта
-  var imgMaze = new Image();
-  imgMaze.onload = function() {
-    // Изменяем размер холста в соответствии 
-	// с размером изображения лабиринта
-    canvas8.width = imgMaze.width;
-    canvas8.height = imgMaze.height;
+    // Загружаем изображение лабиринта
+    var imgMaze = new Image();
+    imgMaze.onload = function () {
+        // Изменяем размер холста в соответствии 
+        // с размером изображения лабиринта
+        canvas8.width = imgMaze.width;
+        canvas8.height = imgMaze.height;
 
-    // Рисуем лабиринт
-    context8.drawImage(imgMaze, 0,0);
+        // Рисуем лабиринт
+        context8.drawImage(imgMaze, 0, 0);
 
-    // Рисуем значок
-    x = startingX;
-    y = startingY;
+        // Рисуем значок
+        x = startingX;
+        y = startingY;
 
-    var imgFace = document.getElementById("face");
-    context8.drawImage(imgFace, x, y);
-    context8.stroke();
+        var imgFace = document.getElementById("face");
+        context8.drawImage(imgFace, x, y);
+        context8.stroke();
 
-    // Рисуем следующий кадр через 10 миллисекунд
-    timer = setTimeout("drawFrame8()", 10);
-  };
-  imgMaze.src = mazeFile;
+        // Рисуем следующий кадр через 10 миллисекунд
+        timer = setTimeout("drawFrame8()", 10);
+    };
+    imgMaze.src = mazeFile;
 }
 
 // Скорость перемещения значка
@@ -516,100 +553,102 @@ var dx = 0;
 var dy = 0;
 
 function processKey(e) {
-  // Если значок находится в движении, останавливаем его
-  dx = 0;
-  dy = 0;
+    // Если значок находится в движении, останавливаем его
+    dx = 0;
+    dy = 0;
 
-  // Если нажата стрелка вверх, начинаем двигаться вверх
-  if (e.keyCode == 38 || e.keyCode == 87) {
-    dy = -1;
-  }
+    // Если нажата стрелка вверх, начинаем двигаться вверх
+    if (e.keyCode == 38 || e.keyCode == 87) {
+        dy = -1;
+    }
 
-  // Если нажата стрелка вниз, начинаем двигаться вниз
-  if (e.keyCode == 40 || e.keyCode == 83) {
-    dy = 1;
-  }
+    // Если нажата стрелка вниз, начинаем двигаться вниз
+    if (e.keyCode == 40 || e.keyCode == 83) {
+        dy = 1;
+    }
 
-  // Если нажата стрелка влево, начинаем двигаться влево
-  if (e.keyCode == 37 || e.keyCode == 65) {
-    dx = -1;
-  }
+    // Если нажата стрелка влево, начинаем двигаться влево
+    if (e.keyCode == 37 || e.keyCode == 65) {
+        dx = -1;
+    }
 
-  // Если нажата стрелка вправо, начинаем двигаться вправо
-  if (e.keyCode == 39 || e.keyCode == 68) {
-    dx = 1;
-  }
+    // Если нажата стрелка вправо, начинаем двигаться вправо
+    if (e.keyCode == 39 || e.keyCode == 68) {
+        dx = 1;
+    }
 }
 
 function drawFrame8() {
-  // Обновляем кадр только если значок движется
-  if (dx != 0 || dy != 0) {
-    // Закрашиваем перемещение значка желтым цветом
-    context8.beginPath();
-    context8.fillStyle = "rgb(254,244,207)";
-    context8.rect(x, y, 15, 15);
-    context8.fill();
+    // Обновляем кадр только если значок движется
+    if (dx != 0 || dy != 0) {
+        // Закрашиваем перемещение значка желтым цветом
+        context8.beginPath();
+        context8.fillStyle = "rgb(254,244,207)";
+        context8.rect(x, y, 15, 15);
+        context8.fill();
 
-    // Обновляем координаты значка, создавая перемещение
-    x += dx;
-    y += dy;
+        // Обновляем координаты значка, создавая перемещение
+        x += dx;
+        y += dy;
 
-    // Проверка столкновения со стенками лабиринта
-	// (вызывается доп. функция)
-    if (checkForCollision()) {
-      x -= dx;
-      y -= dy;
-      dx = 0;
-      dy = 0;
+        // Проверка столкновения со стенками лабиринта
+        // (вызывается доп. функция)
+        if (checkForCollision()) {
+            x -= dx;
+            y -= dy;
+            dx = 0;
+            dy = 0;
+        }
+
+        // Перерисовываем значок
+        var imgFace = document.getElementById("face");
+        context8.drawImage(imgFace, x, y);
+
+        // Проверяем дошел ли пользователь до финиша.
+        // Если дошел, то выводим сообщение
+        if (y > (canvas8.height - 17)) {
+            alert("Ты победил!");
+            return;
+        }
     }
 
-    // Перерисовываем значок
-    var imgFace = document.getElementById("face");
-    context8.drawImage(imgFace, x, y);
-
-    // Проверяем дошел ли пользователь до финиша.
-	// Если дошел, то выводим сообщение
-    if (y > (canvas8.height - 17)) {
-      alert("Ты победил!");
-      return;
-    }
-  }
-
-  // Рисуем следующий кадр через 10 миллисекунд
-  timer = setTimeout("drawFrame8()", 10);
+    // Рисуем следующий кадр через 10 миллисекунд
+    timer = setTimeout("drawFrame8()", 10);
 }
 
 function checkForCollision() {
-  // Перебираем все пикселы и инвертируем их цвет
-  var imgData = context8.getImageData(x-1, y-1, 15+2, 15+2);
-  var pixels = imgData.data;
+    // Перебираем все пикселы и инвертируем их цвет
+    var imgData = context8.getImageData(x - 1, y - 1, 15 + 2, 15 + 2);
+    var pixels = imgData.data;
 
-  // Получаем данные для одного пиксела
-  for (var i = 0; n = pixels.length, i < n; i += 4) {
-    var red = pixels[i];
-    var green = pixels[i+1];
-    var blue = pixels[i+2];
-    var alpha = pixels[i+3];
+    // Получаем данные для одного пиксела
+    for (var i = 0; n = pixels.length, i < n; i += 4) {
+        var red = pixels[i];
+        var green = pixels[i + 1];
+        var blue = pixels[i + 2];
+        var alpha = pixels[i + 3];
 
-    // Смотрим на наличие черного цвета стены, что указывает на столкновение
-    if (red == 0 && green == 0 && blue == 0) {
-      return true;
+        // Смотрим на наличие черного цвета стены, что указывает на столкновение
+        if (red == 0 && green == 0 && blue == 0) {
+            return true;
+        }
+        // Смотрим на наличие серого цвета краев, что указывает на столкновение
+        if (red == 169 && green == 169 && blue == 169) {
+            return true;
+        }
     }
-    // Смотрим на наличие серого цвета краев, что указывает на столкновение
-    if (red == 169 && green == 169 && blue == 169) {
-      return true;
-    }
-  }
-  // Столкновения не было
-  return false;
+    // Столкновения не было
+    return false;
 }
 
 function loadEasy() {
-  drawMaze('./media/easy_maze.png', 5, 5);
+    fileName = "easy_maze.png";
+    drawMaze('./media/easy_maze.png', 5, 5);
 }
 
 function loadHard() {
-  drawMaze('./media/maze.png', 268, 5);
+    fileName = 'maze.png';
+    drawMaze('./media/maze.png', 268, 5);
 }
 
 var previousColorElement;
@@ -835,14 +874,14 @@ function saveData() {
 
     // Сохраняем текст, введенный в текстовом поле, в локальном хранилище
     localStorage["localData"] = localData;
-    
+
     // Сохраняем текст, введенный в текстовом поле, в хранилище сессий
     sessionStorage["sessionData"] = sessionData;
 }
 
 function loadData() {
     // Загружаем сохраненные данные из хранилищ
-    var localData = localStorage["localData"];    
+    var localData = localStorage["localData"];
     var sessionData = sessionStorage["sessionData"];
 
     // Отображаем эти данные в текстовых полях
@@ -854,34 +893,34 @@ function loadData() {
     }
 }
 
-function clearData(){
+function clearData() {
     document.getElementById("localData").value = null;
     document.getElementById("sessionData").value = null;
 }
 
 function findAllItems() {
-  // Получаем элемент <ul> для списка элементов данных
-  var itemList = document.getElementById("itemList");
-  
-  // Очищаем список
-  itemList.innerHTML = "";
+    // Получаем элемент <ul> для списка элементов данных
+    var itemList = document.getElementById("itemList");
 
-  // Перебираем все элементы данных в цикле
-  for (var i=0; i<localStorage.length; i++) {
-	// Получаем ключ текущего элемента
-    var key = localStorage.key(i);
-	
-    // Получаем сам элемент, хранящийся под этим ключом
-    var item = localStorage[key];
+    // Очищаем список
+    itemList.innerHTML = "";
 
-    // Заполняем список
-    var newItem = document.createElement("li");
-    newItem.innerHTML = key + ": " + item;
-    itemList.appendChild(newItem);
-  }
+    // Перебираем все элементы данных в цикле
+    for (var i = 0; i < localStorage.length; i++) {
+        // Получаем ключ текущего элемента
+        var key = localStorage.key(i);
+
+        // Получаем сам элемент, хранящийся под этим ключом
+        var item = localStorage[key];
+
+        // Заполняем список
+        var newItem = document.createElement("li");
+        newItem.innerHTML = key + ": " + item;
+        itemList.appendChild(newItem);
+    }
 }
 
-function generateLocalData(){
+function generateLocalData() {
     localStorage.username = "Igor";
     localStorage.password = "12345";
     localStorage.work = "programmer";
@@ -890,13 +929,13 @@ function generateLocalData(){
 
 // Определяем тип данных UserInfo
 function UserInfo(name, family, age, login) {
-	this.name = name;
-	this.family = family;
-	this.age = age;
-	this.login = login;
+    this.name = name;
+    this.family = family;
+    this.age = age;
+    this.login = login;
 }
 
-function getObjectInfo(){
+function getObjectInfo() {
     // Создаем объект UserInfo
     var user = new UserInfo("Игорь", "Кравец", 34, "igor.kravitz");
 
