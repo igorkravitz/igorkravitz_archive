@@ -1,0 +1,10 @@
+CACHE MANIFEST
+# pages
+Canvas.html
+
+# styles & scripts
+cssFiles/index.css
+javaScripts/index.js
+
+# pictures # fonts
+media/*.png
