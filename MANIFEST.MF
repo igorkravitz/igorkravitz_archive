@@ -4,7 +4,7 @@ NETWORK:
 *
 FALLBACK:
 Canvas.html Canvas_offline.html
-#Manifest-Version: 1.0
+#Manifest-Version: 1.1
 #Class-Path: 
 # pages
 Canvas.html
