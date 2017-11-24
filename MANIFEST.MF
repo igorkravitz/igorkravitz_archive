@@ -8,5 +8,7 @@ cssFiles/index.css
 javaScripts/index.js
 
 # pictures # fonts
-media/*.png
+media/maze.png
+media/easy_maze.png
+media/face.png
 
