@@ -1,0 +1,12 @@
+CACHE MANIFEST
+#Manifest-Version: 1.0
+#Class-Path: 
+# pages
+Canvas.html
+# styles & scripts
+cssFiles/index.css
+javaScripts/index.js
+
+# pictures # fonts
+media/*.png
+
