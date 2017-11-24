@@ -2,6 +2,8 @@ CACHE MANIFEST
 
 NETWORK:
 *
+FALLBACK:
+Canvas.html Canvas_offline.html
 #Manifest-Version: 1.0
 #Class-Path: 
 # pages
