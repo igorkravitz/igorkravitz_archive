@@ -14,8 +14,8 @@ media/maze.png
 media/easy_maze.png
 media/face.png
 
-#NETWORK:
-#*
+NETWORK:
+*
 
 FALLBACK:
 javaScripts/online.js javaScripts/offline.js
