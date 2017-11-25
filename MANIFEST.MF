@@ -1,9 +1,4 @@
 CACHE MANIFEST
-
-NETWORK:
-*
-FALLBACK:
-javaScripts/online.js javaScripts/offline.js
 #Canvas.html Canvas_offline.html
 #Manifest-Version: 1.1
 #Class-Path: 
@@ -18,4 +13,10 @@ javaScripts/offline.js
 media/maze.png
 media/easy_maze.png
 media/face.png
+
+NETWORK:
+*
+
+FALLBACK:
+javaScripts/online.js javaScripts/offline.js
 
