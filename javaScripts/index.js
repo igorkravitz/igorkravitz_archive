@@ -986,40 +986,47 @@ function initDropBox() {
 }
 
 function ignoreDrag(e) {
-  // Обеспечиваем, чтобы никто другой не получил это событие, 
-  // т.к. мы выполняем операцию перетаскивания
-  e.stopPropagation();
-  e.preventDefault();
+    // Обеспечиваем, чтобы никто другой не получил это событие, 
+    // т.к. мы выполняем операцию перетаскивания
+    e.stopPropagation();
+    e.preventDefault();
 }
 
 function drop(e) {
-  // Аннулируем это событие для всех других
-  e.stopPropagation();
-  e.preventDefault();
- 
-  // Получаем перемещенные файлы
-  var data = e.dataTransfer;
-  var files = data.files;
-	 
-  // Передаем полученный файл функции для обработки файлов
-  processFiles2(files);
+    // Аннулируем это событие для всех других
+    e.stopPropagation();
+    e.preventDefault();
+
+    // Получаем перемещенные файлы
+    var data = e.dataTransfer;
+    var files = data.files;
+
+    // Передаем полученный файл функции для обработки файлов
+    processFiles2(files);
 }
 
 function processFiles2(files) {
-  var file = files[0];
-  
-  var reader = new FileReader();
+    var file = files[0];
 
-  reader.onload = function (e) {
-    // Используем URL изображения для заполнения фона
-	dropBox.style.backgroundImage = "url('" + e.target.result + "')";
-  };
-  
-  // Начинаем считывать изображение
-  reader.readAsDataURL(file);
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // Используем URL изображения для заполнения фона
+        dropBox.style.backgroundImage = "url('" + e.target.result + "')";
+    };
+
+    // Начинаем считывать изображение
+    reader.readAsDataURL(file);
 }
 
-
+function writeHeaderOffline() {
+    if (!isSiteOnline()) {
+        // Можно выполнять задачи, требующие подключения к интернету, такие 
+        // как взаимодействие с серверам с помощью объекта XMLHttpRequest
+        document.getElementsByTagName('h1')[0].innerHTML = 
+                document.getElementsByTagName('h1')[0].innerHTML + ' (автономный режим)';
+    }
+}
 
 
 
