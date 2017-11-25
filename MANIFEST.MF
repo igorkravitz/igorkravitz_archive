@@ -3,7 +3,7 @@ CACHE MANIFEST
 NETWORK:
 *
 FALLBACK:
-online.js offline.js
+javaScripts/online.js javaScripts/offline.js
 #Canvas.html Canvas_offline.html
 #Manifest-Version: 1.1
 #Class-Path: 
