@@ -5,8 +5,29 @@ article, aside, figure, figcaption, footer, header, hgroup, nav, section,
 	display: block;
 }
 
+/*#drag_image_here{
+    display: none;
+}*/
+
 #fileInput {
 	display:none;
+}
+
+#slide {
+  background: rgba(218,165,32,0.8);
+  border: solid 1px black;
+  width: 730px;
+  min-height: 550px;
+  /*padding: 10px;*/
+}
+
+/*#slide p {
+  font-family: Lucida Sans Unicode, serif;
+}*/
+
+#slide img {
+  margin-top: 10px;
+  border: solid 1px white;
 }
 
 #dropBox {
@@ -267,6 +288,7 @@ footer p {
 fieldset {
 	margin-bottom: 15px;
 	padding: 10px;
+        /*float: left;*/
 }
 
 legend {
@@ -366,4 +388,22 @@ input[type=reset] {
 
 .url {
 
+}
+
+#mapSurface {
+    width: 600px;
+    height: 400px;
+    border: solid 1px black;
+}
+
+#primeContainer {
+   border: solid 1px black;
+   padding: 3px;
+   height: 300px;
+   max-width: 500px;
+   overflow: scroll;
+   overflow-x: hidden;
+   font-size: x-small;
+   margin-top: 20px;
+   margin-bottom: 10px;
 }

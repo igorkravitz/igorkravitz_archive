@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
         <meta charset="UTF-8">
-        <title>Обучение HTML</title>
+        <title>Фоновые вычисления</title>
+        <link rel="shortcut icon" href="#">
         <link rel="stylesheet" href="cssFiles/index.css" type="text/css"/>
         <script type="text/javascript" src="javaScripts\index.js"></script>
-        <script>
-            window.onload = function () {
-                // Подключаем событие onstorage к функции storageChanged
-                window.addEventListener("storage", storageChanged, false);
-            };
-        </script>
     </head>
     <body>
         <article>
@@ -19,12 +14,17 @@
                     writeNav();
                 </script>
                 <hgroup>
-                    <h1>Тестовая страница</h1>
-                    <h1 class="Teaser">Отображение изменений данных веб-хранилища</h1>
+                    <h1>Фоновые вычисления</h1>
+                    <h1 class="Teaser">Пример фоновых вычислений</h1>
                 </hgroup>
                 <p class="Byline"></p>
             </header>
-            <div id="updateMessage"></div>
+            <p>Задайте диапазон чисел от <input id="from" value="1"> до <input id="to" value="200000">.</p>
+            <button id="searchButton" onclick="doSearch()">Запустить поиск</button>
+            <button onClick="cancelSearch()">Остановить поток</button>
+            <div id="primeContainer">
+            </div>
+            <div id="status"></div>
             <div class="emptyblock"></div>
             <script type="text/javascript">
                 writeFooter();

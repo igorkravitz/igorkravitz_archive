@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>XMLHttpRequest</title>
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="cssFiles/index.css" type="text/css"/>
+        <script type="text/javascript" src="javaScripts\index.js"></script>
+        <script type="text/javascript">
+            window.onload = function (){
+                if(location.href != 'http://localhost:8383/project1/XMLHttpRequestEx.html'){
+                    var indexOfSharp = location.href.indexOf('#');
+                    if(~indexOfSharp){
+                        var slideNum = parseInt(location.href.substring(indexOfSharp+1));
+                        history.pushState(slideNum, null, "XMLHttpRequestEx.html#"+slideNum);
+                        goToNewSlide(slideNum);
+//                        goToNewSlide(SlideNum);
+                    }
+//                    location.href = 'http://localhost:8383/project1/XMLHttpRequestEx.html';
+                }
+            };
+        </script>
+        <style>
+            /*            body {
+                            font-family: Verdana;
+                            font-size: 12px;
+                        }*/
+
+            fieldset {
+                margin: 20px;
+                border: black 1px solid;
+                padding: 10px;
+                background-color: #FBF3CB;
+            }
+
+            input {
+                width: 75px;
+            }
+
+            #result {
+                color: darkred;
+                font-weight: bold;
+            }
+            button {
+                padding:6px;
+            }
+        </style>
+    </head>
+    <body>
+        <article>
+            <header role="banner">
+                <script type="text/javascript">
+                    writeNav();
+                </script>
+                <hgroup>
+                    <h1>XMLHttpRequest</h1>
+                    <h1 class="Teaser">Пример отправки запроса веб-серверу</h1>
+                </hgroup>
+                <p class="Byline"></p>
+            </header>
+            <fieldset>
+                <legend>Вызов серверной процедуры php</legend>
+                <p>Вставьте два числа:
+                    <input id="number1" type="number" value="1">
+                    <input id="number2" type="number" value="2">
+                </p>
+                <p>Чтобы спросить у сервера сумму этих чисел без перезагрузки страницы, нажмите эту кнопку:</p>
+                <button onclick="askServer('result1')">Спросить у сервера</button>
+                <p id="result1"></p>
+            </fieldset>
+            <fieldset>
+                <legend>Чтение файла-txt на сервере</legend>
+                <p>Чтобы прочитать файл на сервере, нажмите эту кнопку:</p>
+                <button onclick="askServer('result2')">Спросить у сервера</button>
+                <p id="result2"></p>
+            </fieldset>  
+            <fieldset>
+                <legend>Вызов серверной процедуры java</legend>
+                <p>Вставьте два числа:
+                    <input id="number3" type="number" value="1">
+                    <input id="number4" type="number" value="2">
+                </p>
+                <p>Чтобы спросить у сервера сумму этих чисел без перезагрузки страницы, нажмите эту кнопку:</p>
+                <button onclick="askServer('result3')">Спросить у сервера</button>
+                <p id="result3"></p>
+            </fieldset>
+            <fieldset>
+                <legend>Вызов серверной процедуры python</legend>
+                <p>Вставьте два числа:
+                    <input id="number5" type="number" value="1">
+                    <input id="number6" type="number" value="2">
+                </p>
+                <p>Чтобы спросить у сервера сумму этих чисел без перезагрузки страницы, нажмите эту кнопку:</p>
+                <button onclick="askServer('result4')">Спросить у сервера</button>
+                <p id="result4"></p>
+            </fieldset>
+            <fieldset>
+                <legend>Вызов серверной процедуры javascript</legend>
+                <p>Вставьте два числа:
+                    <input id="number7" type="number" value="1">
+                    <input id="number8" type="number" value="2">
+                </p>
+                <p>Чтобы спросить у сервера сумму этих чисел без перезагрузки страницы, нажмите эту кнопку:</p>
+                <button onclick="askServer('result5')">Спросить у сервера</button>
+                <p id="result5"></p>
+            </fieldset>
+            <fieldset>
+                <legend>Экзотические места в Китае (можно создать закладку на любом слайде)</legend>
+                <div id="slide">Нажмите на ссылку, чтобы показать картинку.</div>
+                <a style="color: green;" onclick="return previousSlide()" href="#">&lt; Пред</a> 
+                <a style="color: green;" onclick="return nextSlide()" href="#">След ></a>
+            </fieldset>
+            <!--<div class="emptyblock"></div>-->
+            <script type="text/javascript">
+                writeFooter();
+            </script>
+        </article>
+    </body>
+</html>

@@ -4,13 +4,6 @@ var isDrawing;
 var cCanvas3;
 var Canvas3;
 
-//window.onload = function () {
-////    video = document.getElementById("videoPlayer");
-////	drawningCanvas1();
-////	drawningCanvas2();
-////      drawningCanvas3();
-//};
-
 function storageChanged(e) {
     var message = document.getElementById("updateMessage");
     message.innerHTML = "Обновление локального хранилища.";
@@ -767,7 +760,12 @@ function writeNav() {
         'Questionary.html': 'Анкета',
         'Media.html': 'Медиа',
         'Canvas.html': 'Холст',
-        'WebStorage.html': 'Веб-хранилище'
+        'WebStorage.html': 'Веб-хранилище',
+        'XMLHttpRequestEx.html': 'Запрос к веб-серверу',
+        'ServerEvents.html': 'Серверные события',
+        'webSockets.html': 'Веб-сокеты',
+        'Geolocation.html': 'Геолокация',
+        'WebWorkers.html': 'Фоновые вычисления'
     };
     document.write(
             "<nav>" +
@@ -961,16 +959,24 @@ function addValue() {
     localStorage[key] = item;
 }
 
+var dropBox;
+
 function processFiles(files) {
     var file = files[0];
     var reader = new FileReader();
     reader.onload = function (e) {
         // Когда это событие активируется, данные готовы.
         // Вставляем их в страницу в элемент <div>
-        var output = document.getElementById("fileOutput");
-        output.textContent = e.target.result;
+//        var output = document.getElementById("fileOutput");
+//        output.textContent = e.target.result;
+          drag_image_here = document.getElementById("drag_image_here");
+          drag_image_here.style.display = 'none';
+        // Используем URL изображения для заполнения фона
+        dropBox.style.backgroundImage = "url('" + e.target.result + "')";
     };
-    reader.readAsText(file);
+//    reader.readAsText(file);
+    // Начинаем считывать изображение
+    reader.readAsDataURL(file);
 }
 
 function showFileInput() {
@@ -983,6 +989,7 @@ function initDropBox() {
     dropBox.ondragenter = ignoreDrag;
     dropBox.ondragover = ignoreDrag;
     dropBox.ondrop = drop;
+//    document.write("<div>Перетащите изображение сюда...</div>");
 }
 
 function ignoreDrag(e) {
@@ -1011,6 +1018,8 @@ function processFiles2(files) {
     var reader = new FileReader();
 
     reader.onload = function (e) {
+        drag_image_here = document.getElementById("drag_image_here");
+          drag_image_here.style.display = 'none';
         // Используем URL изображения для заполнения фона
         dropBox.style.backgroundImage = "url('" + e.target.result + "')";
     };
@@ -1023,12 +1032,332 @@ function writeHeaderOffline() {
     if (!isSiteOnline()) {
         // Можно выполнять задачи, требующие подключения к интернету, такие 
         // как взаимодействие с серверам с помощью объекта XMLHttpRequest
-        document.getElementsByTagName('h1')[0].innerHTML = 
+        document.getElementsByTagName('h1')[0].innerHTML =
                 document.getElementsByTagName('h1')[0].innerHTML + ' (автономный режим)';
     }
 }
 
+var req = new XMLHttpRequest();
+var ElementId;
 
+function askServer(pElementId) {
+    ElementId = pElementId;
+    if (ElementId == "result1") {
+        // Получаем введенные в форму числа
+        var number1 = document.getElementById("number1").value;
+        var number2 = document.getElementById("number2").value;
 
+        // Структурируем строку запроса
+        var dataToSend = "?number1=" + number1 + "&number2=" + number2;
+        req.open("GET", "http://localhost:8080/quercus-4.0.39/WebCalculator.php" + dataToSend, true);//, "ide", "Fa0QOQPq");
+    } else if (ElementId == "result2") {
+        req.open("GET", "response.txt", true);
+    } else if (ElementId == "result3") {
+        var number1 = document.getElementById("number3").value;
+        var number2 = document.getElementById("number4").value;
+        // Структурируем строку запроса
+        var dataToSend = "?number1=" + number1 + "&number2=" + number2;
+        req.open("GET", "http://localhost:8080/WebApplication1/MyServlet" + dataToSend, true);//, "ide", "Fa0QOQPq");
+    } else if (ElementId == "result4") {
+        var number1 = document.getElementById("number5").value;
+        var number2 = document.getElementById("number6").value;
+        // Структурируем строку запроса
+        var dataToSend = "?number1=" + number1 + "&number2=" + number2;
+        req.open("GET", "http://localhost:8080/WebApplication2/cgi-bin/servlet.py" + dataToSend, true);//, "ide", "Fa0QOQPq");
+    } else if (ElementId == "result5") {
+        var number1 = document.getElementById("number7").value;
+        var number2 = document.getElementById("number8").value;
+        // Структурируем строку запроса
+        var dataToSend = "?number1=" + number1 + "&number2=" + number2;
+        req.open("GET", "http://localhost:3000/sum" + dataToSend, true);//, "ide", "Fa0QOQPq");
+//        req.open("GET", "http://localhost:8080/WebApplication3/cgi-bin/servlet.js" + dataToSend, true);
+    }
 
+//    req.open("GET", "WebCalculator.php", true);
+//    req.open("GET", "response.txt", true);
+//        req.open("POST", "WebCalculator.php", true);
+    req.onreadystatechange = handleServerResponse;
+//    req.setRequestHeader("Cache-Control", "no-cache");
+//    req.setRequestHeader('Content-Type', 'application/json');
+    req.send();
+    document.getElementById(ElementId).innerHTML = "Запрос отправлен на сервер.";
+}
 
+function handleServerResponse() {
+    if ((req.readyState == 4) && (req.status == 200))
+    {
+        var result = req.responseText;
+        document.getElementById(ElementId).innerHTML = "Ответ сервера: " + result;
+    }
+}
+
+var slideNumber = 0;
+
+function nextSlide() {
+    if (slideNumber == 5) {
+        slideNumber = 1;
+    } else {
+        slideNumber += 1;
+    }
+    // Добавленный код XMLHttpRequestEx.html/
+    history.pushState(slideNumber, null, "XMLHttpRequestEx.html#"+slideNumber);
+    //
+    goToNewSlide(slideNumber);
+    return false;
+}
+
+function previousSlide() {
+    if (slideNumber == 1) {
+        slideNumber = 5;
+    } else {
+        slideNumber -= 1;
+    }
+    // Добавленный код XMLHttpRequestEx.html/
+    history.pushState(slideNumber, null, "XMLHttpRequestEx.html#"+slideNumber);
+    goToNewSlide(slideNumber);
+    return false;
+}
+
+window.onpopstate = function(e) {
+    console.log('fdgsdfgs');
+  if (e.state != null) {
+    // Определяем номер слайда для данного состояния. 
+    // (Этот номер также можно было вырезать из URL, используя 
+    // свойство location.href, но для этого потребуется больше работы.)
+    slideNumber = e.state;
+//        console.log('fdgsdfgs');
+    // Запрашиваем этот слайд у веб-сервера
+    goToNewSlide(slideNumber);
+  }
+};
+
+function goToNewSlide(slideNum) {
+    if (slideNumber!=slideNum){
+        slideNumber = slideNum;
+    }
+    // Отправляем номер слайда в файл exotic_china.php
+    req.open("GET", "http://localhost:3000/slide?number=" + slideNum, true);
+
+    // Подключаем функцию для обработки данных слайдов
+    req.onreadystatechange = newSlideReceived;
+
+    // Отправляем запрос
+    req.send();
+}
+//var pako = require('/pako/node_modules/pako');
+function newSlideReceived() {
+    if ((req.readyState == 4) && (req.status == 200))
+    {
+//        var uncompressed = pako.inflate(new Uint8Array(req.responseText), {to: 'string'});
+
+        // Convert utf8 -> utf16 (native JavaScript string format)
+//        var decoded = decodeURIComponent(escape(uncompressed));
+        document.getElementById("slide").innerHTML = req.responseText;
+    }
+}
+
+var messageLog;
+var timeDisplay;
+
+function initVar() {
+    messageLog = document.getElementById("messageLog");
+    timeDisplay = document.getElementById("timeDisplay");
+}
+
+function startListening() {
+    source = new EventSource("http://localhost:3000/serverEvents");
+    source.onmessage = receiveMessage;
+    messageLog.innerHTML += "<br>" + "Начинаем слушать сообщения.";
+}
+
+function receiveMessage(event) {
+    messageLog.innerHTML += "<br>" + event.data;
+    timeDisplay.innerHTML = event.data;
+}
+
+function stopListening() {
+    source.close();
+    messageLog.innerHTML += "<br>" + "Больше не прослушивать сообщения.";
+}
+
+//var messageLog1,messageLog2;
+//var messageLog;
+var sockets = {
+    messageLog1: {
+        adress: 'ws://echo.websocket.org',
+        socket: null
+    },
+    messageLog2: {
+        adress: 'ws://localhost:8081',
+        socket: null
+    }
+};
+//function initVarWebSockets() {
+//    messageLog1 = document.getElementById("messageLog1");
+//    messageLog2 = document.getElementById("messageLog2");
+////    timeDisplay = document.getElementById("timeDisplay");
+//}
+
+function clearLog(idElement) {
+    messageLog = document.getElementById(idElement);
+    messageLog.innerHTML = '[Лог сообщений:]';
+}
+
+function connectWebSocket(idElement) {
+    messageLog = document.getElementById(idElement);
+    sockets[idElement].socket = new WebSocket(sockets[idElement].adress);
+    sockets[idElement].socket.onopen = function connectionOpen() {
+        messageLog.innerHTML += "<br>" + "Отправлено 'UserName:1C7782@gmail.com': ";
+        this.send("UserName:1C7782@gmail.com");
+    };
+    sockets[idElement].socket.onmessage = function messageReceived(e) {
+        messageLog.innerHTML += "<br>" + "Ответ сервера (получено): " + e.data;
+    };
+    sockets[idElement].socket.onerror = function errorOccurred(e) {
+        messageLog.innerHTML += "<br>" + "Ответ сервера (ошибка получения): " + e.message;
+    };
+    sockets[idElement].socket.onclose = function connectionClosed(e) {
+        messageLog.innerHTML += "<br>" + "Ответ сервера (закрытие соединения): " +
+                "(" + e.code + ") " + e.reason;
+    };
+}
+
+function closeWebSocket(idElement) {
+    sockets[idElement].socket.close();
+}
+
+//var google = new require('google');
+
+//function initMap() {
+//    var uluru = {lat: -25.363, lng: 131.044};
+//    var map = new google.maps.Map(document.getElementById('mapSurface'), {
+//        zoom: 4,
+//        center: uluru
+//    });
+//    var marker = new google.maps.Marker({
+//        position: uluru,
+//        map: map
+//    });
+//}
+
+//function InitMap() {
+//    var result = document.getElementById('result');
+//
+//    // Устанавливаем некоторые параметры карты. В данном примере 
+//    // устанавливаются начальный уровень масштабирования и тип карты. 
+//    // Информацию о других параметрах см. в документации по Google Maps.
+//    var myOptions = {
+//        zoom: 13,
+//        mapTypeId: google.maps.MapTypeId.ROADMAP
+//    };
+//
+//    // Создаем карту, используя установленные выше параметры
+//    map = new google.maps.Map(document.getElementById("mapSurface"), myOptions);
+//    // Пытаемся определить местоположение пользователя
+//    if (navigator.geolocation) {
+//        navigator.geolocation.getCurrentPosition(
+//                function geolocationSuccess(position) {
+//                    // Преобразуем местоположение в объект LatLng
+//                    var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+//
+//                    // Отображаем эту точку на карте
+//                    map.setCenter(location);
+//                    // Создаем всплывающее информационное окно и устанавливаем
+//                    // его текст и положение на карте.
+//                    var infowindow = new google.maps.InfoWindow();
+//                    infowindow.setContent("Вы находитесь где-то в этом районе.");
+//                    infowindow.setPosition(location);
+//
+//                    // Отображаем всплывающее окно
+//                    infowindow.open(map);
+//
+//                    result.innerHTML = "Местоположение отмечено на карте.";
+//                }, 
+//                function geolocationFailure(positionError) {
+//                    //	...
+//                    goToDefaultLocation(map);
+//                }
+//        );
+//
+//        result.innerHTML = "Поиск завершен";
+//    } else {
+//        result.innerHTML = "Ваш браузер не поддерживает геолокацию";
+//        goToDefaultLocation();
+//    }
+//}
+
+//function goToDefaultLocation(map) {
+//    // Примерные координаты центра Москвы
+//    var moscow = new google.maps.LatLng(55.753878, 37.649275);
+//    map.setCenter(moscow);
+//}
+
+var searchButton, statusDisplay, worker;
+
+function doSearch() {
+    searchButton = document.getElementById('searchButton');
+    statusDisplay = document.getElementById("status");
+    // Отключаем кнопку запуска вычислений, чтобы пользователь не мог 
+    // запускать несколько процессов поиска одновременно
+    searchButton.disabled = true;
+    // Получаем начальное и конечное число диапазона поиска
+    var fromNumber = document.getElementById("from").value;
+    var toNumber = document.getElementById("to").value;
+
+    // Создаем поток
+    worker = new Worker("javaScripts/PrimeWorker.js");
+
+    // Подключаем функцию к событию onMessage, чтобы получать 
+    // сообщения от потока
+    worker.onmessage = receivedWorkerMessage;
+    worker.onerror = workerError;
+
+    worker.postMessage(
+            {from: fromNumber,
+                to: toNumber
+            }
+    );
+
+    // Информируем пользователя, что вычисления выполняются
+    statusDisplay.innerHTML = "Фоновый поток ищет простые числа (от " +
+            fromNumber + " до " + toNumber + ") ...";
+}
+
+function receivedWorkerMessage(event) {
+    var message = event.data;
+
+    if (message.messageType == "PrimeList") {
+        // Отображаем список в соответствующей области страницы
+        var primes = message.data;
+
+        var primeList = "";
+        for (var i = 0; i < primes.length; i++) {
+            primeList += primes[i];
+            if (i != primes.length - 1)
+                primeList += ", ";
+        }
+
+        var primeContainer = document.getElementById("primeContainer");
+        primeContainer.innerHTML = primeList;
+
+        if (primeList.length == 0) {
+            statusDisplay.innerHTML = "Ошибка поиска.";
+        } else {
+            statusDisplay.innerHTML = "Простые числа найдены!";
+        }
+        searchButton.disabled = false;
+    } else if (message.messageType == "Progress") {
+        statusDisplay.innerHTML = message.data + "% выполнено ...";
+    }
+}
+
+function workerError(error) {
+    statusDisplay.innerHTML = error.message + ' file: ' + error.filename + ' line: ' + error.lineno.toString();
+}
+
+function cancelSearch() {
+    worker.terminate();
+    worker = null;
+    statusDisplay.innerHTML = "Поток остановлен.";
+    searchButton.disabled = false;
+}

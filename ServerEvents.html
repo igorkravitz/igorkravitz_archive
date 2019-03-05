@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Серверные события</title>
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="cssFiles/index.css" type="text/css"/>
+        <script type="text/javascript" src="javaScripts\index.js"></script>
+        <style>
+            /*            body {
+                            font-family: Verdana;
+                            font-size: 12px;
+                        }*/
+
+            #messageLog {
+                width: 400px;
+                height: 450px;
+                border: darkgray 2px solid;
+                border-radius: 5px;
+                margin: 20px;
+                padding: 10px;
+                overflow: scroll;
+                overflow-x: hidden;
+            }
+
+            #timeDisplay {
+                color: darkblue;
+                font-size: 30px;
+                width: 400px;
+                font-weight: bold;
+                border: black 1px solid;
+                border-radius: 10px;
+                margin: 10px 20px 10px 20px;
+                padding: 10px;
+                background-color: #FBF3CB;
+            }
+
+            button {
+                padding: 8px;
+                margin: 5px 0px 0px 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <article>
+            <header role="banner">
+                <script type="text/javascript">
+                    writeNav();
+                </script>
+                <hgroup>
+                    <h1>Серверные события</h1>
+                    <h1 class="Teaser">Пример серверных событий</h1>
+                </hgroup>
+                <p class="Byline"></p>
+            </header>
+            <div id="messageLog">[Лог сообщений:]</div>
+            <div id="timeDisplay">[Время не получено]</div>
+            <script type="text/javascript">
+                initVar();
+            </script>
+            <div id="controls">
+                <button onclick="startListening()">Начать прослушивание</button>
+                <button onclick="stopListening()">Остановить прослушивание</button>
+            </div>
+            <div class="emptyblock"></div>
+            <script type="text/javascript">
+                writeFooter();
+            </script>
+        </article>
+    </body>
+</html>

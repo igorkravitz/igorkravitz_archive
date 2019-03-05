@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Веб-сокеты</title>
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="cssFiles/index.css" type="text/css"/>
+        <script type="text/javascript" src="javaScripts\index.js"></script>
+        <style>
+
+            #messageLog1,#messageLog2 {
+                width: 400px;
+                height: 250px;
+                border: darkgray 2px solid;
+                border-radius: 5px;
+                margin: 20px;
+                padding: 10px;
+                overflow: scroll;
+                overflow-x: hidden;
+            }
+
+            /*            #timeDisplay {
+                            color: darkblue;
+                            font-size: 30px;
+                            width: 400px;
+                            font-weight: bold;
+                            border: black 1px solid;
+                            border-radius: 10px;
+                            margin: 10px 20px 10px 20px;
+                            padding: 10px;
+                            background-color: #FBF3CB;
+                        }*/
+
+            button {
+                padding: 8px;
+                margin: 5px 0px 0px 20px;
+            }
+            
+            fieldset {
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <article>
+            <header role="banner">
+                <script type="text/javascript">
+                    writeNav();
+                </script>
+                <hgroup>
+                    <h1>Веб-сокеты</h1>
+                    <h1 class="Teaser">Пример веб-сокетов</h1>
+                </hgroup>
+                <p class="Byline"></p>
+            </header>
+            <fieldset>
+                <legend>Подключение к внешнему веб-сокету ws://echo.websocket.org</legend>
+                <div id="messageLog1">[Лог сообщений:]</div>
+                <div id="controls1">
+                    <button onclick="connectWebSocket('messageLog1')">Подключиться</button>
+                    <button onclick="closeWebSocket('messageLog1')">Отключиться</button>
+                    <button onclick="clearLog('messageLog1')">Очистить лог</button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Подключение к собственному веб-сокету</legend>
+                <div id="messageLog2">[Лог сообщений:]</div>
+                <div id="controls2">
+                    <button onclick="connectWebSocket('messageLog2')">Подключиться</button>
+                    <button onclick="closeWebSocket('messageLog2')">Отключиться</button>
+                    <button onclick="clearLog('messageLog2')">Очистить лог</button>
+                </div>
+            </fieldset>
+<!--            <script type="text/javascript">
+                initVarWebSockets();
+            </script>-->
+            <div class="emptyblock"></div>
+            <script type="text/javascript">
+                writeFooter();
+            </script>
+        </article>
+    </body>
+</html>

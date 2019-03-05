@@ -2,71 +2,71 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Обучение HTML</title>
+        <title>Веб-хранилище</title>
+        <link rel="shortcut icon" href="#">
         <link rel="stylesheet" href="cssFiles/index.css" type="text/css"/>
         <script type="text/javascript" src="javaScripts\index.js"></script>
     </head>
     <body>
-        <article>
-            <header role="banner">
-                <script type="text/javascript">
-                    writeNav();
-                </script>
-                <hgroup>
-                    <h1>Веб-хранилище</h1>
-                    <h1 class="Teaser">Пример работы веб-хранилища</h1>
-                </hgroup>
-                <p class="Byline"></p>
-            </header>
-            <fieldset>
-                <legend>Веб-хранилище</legend>
-                <label for="localData">Этот текст сохранится в локальном хранилище:</label>
-                <input id="localData"><br>
-                <label for="sessionData">Этот текст сохранится в хранилище данных сессии:</label>
-                <input id="sessionData">
-            </fieldset>
-            <div>
-                <button onclick="saveData()">Сохранить</button>
-                <button onclick="loadData()">Загрузить</button>
-                <button onclick="clearData()">Очистить</button>
-            </div>
-            <div class="emptyblock_both"></div>
-            <script type="text/javascript">generateLocalData();</script>
-            <button onclick="findAllItems()">Содержимое локального хранилища</button>
-            <ul id="itemList"></ul>
-            <div class="emptyblock_both"></div>
-            <button onclick="getObjectInfo()">Содержимое объекта хранилища сессии</button>
-            <div class="emptyblock_both"></div>
-            <fieldset>
-                <legend>Реагирование на изменения в хранилище</legend>
-                <label for="key">Ключ:</label>
-                <input id="key"><br>
-                <label for="item">Значение:</label>
-                <input id="item">
-                <div class="emptyblock_both"></div>
-                <button onclick="addValue()">Добавить</button>
-                <div class="emptyblock_both"></div>
-                <a href="TastingPage.html" target="_blank">Контрольная страница изменений (будет открыта в новой вкладке)</a>
-            </fieldset>
-            <div class="emptyblock_both"></div>
-            <input id="fileInput" type="file" size="50" onchange="processFiles(this.files)">
-            <button onclick="showFileInput()">Добавить файл</button>
-            <div class="emptyblock_both"></div>
-            <div id="fileOutput"></div>
-            <div class="emptyblock_both"></div>
-            <div id="dropBox">
-                <div>Перетащите изображение сюда...</div>
-                <script type="text/javascript">
-                    initDropBox();
-                </script>
-            </div>
-            <input id="fileInput" type="file" onchange="processFiles(this.files)">
-            <img id="thumbnail">
-            
-            <div class="emptyblock"></div>
+
+        <header role="banner">
             <script type="text/javascript">
-                writeFooter();
+                writeNav();
             </script>
-        </article>
+            <hgroup>
+                <h1>Веб-хранилище</h1>
+                <h1 class="Teaser">Пример работы веб-хранилища</h1>
+            </hgroup>
+            <p class="Byline"></p>
+        </header>
+        <fieldset>
+            <legend>Веб-хранилище</legend>
+            <label for="localData">Этот текст сохранится в локальном хранилище:</label>
+            <input id="localData"><br>
+            <label for="sessionData">Этот текст сохранится в хранилище данных сессии:</label>
+            <input id="sessionData">
+        </fieldset>
+        <div>
+            <button onclick="saveData()">Сохранить</button>
+            <button onclick="loadData()">Загрузить</button>
+            <button onclick="clearData()">Очистить</button>
+        </div>
+        <div class="emptyblock_both"></div>
+        <script type="text/javascript">generateLocalData();</script>
+        <button onclick="findAllItems()">Содержимое локального хранилища</button>
+        <ul id="itemList"></ul>
+        <div class="emptyblock_both"></div>
+        <button onclick="getObjectInfo()">Содержимое объекта хранилища сессии</button>
+        <div class="emptyblock_both"></div>
+        <fieldset>
+            <legend>Реагирование на изменения в хранилище</legend>
+            <label for="key">Ключ:</label>
+            <input id="key"><br>
+            <label for="item">Значение:</label>
+            <input id="item">
+            <div class="emptyblock_both"></div>
+            <button onclick="addValue()">Добавить</button>
+            <div class="emptyblock_both"></div>
+            <a href="TastingPage.html" target="_blank">Контрольная страница изменений (будет открыта в новой вкладке)</a>
+        </fieldset>
+        <div class="emptyblock_both"></div>
+        <input id="fileInput" type="file" size="50" onchange="processFiles(this.files)">
+        <button onclick="showFileInput()">Добавить файл</button>
+        <div class="emptyblock_both"></div>
+        <div id="fileOutput"></div>
+        <div class="emptyblock_both"></div>
+        <div id="dropBox">
+            <div id="drag_image_here">Перетащите изображение сюда...</div>
+            <script type="text/javascript">
+                initDropBox();
+            </script>
+        </div>
+        <input id="fileInput" type="file" onchange="processFiles(this.files)">
+        <img id="thumbnail">            
+        <div class="emptyblock"></div>
+        <script type="text/javascript">
+            writeFooter();
+        </script>
+
     </body>
 </html>

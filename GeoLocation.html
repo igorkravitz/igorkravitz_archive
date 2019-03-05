@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Геолокация</title>
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="cssFiles/index.css" type="text/css"/>
+        <script type="text/javascript" src="javaScripts\index.js"></script>
+        <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=sensor=true"></script>-->
+
+    </head>
+    <body>
+        <article>
+            <header role="banner">
+                <script type="text/javascript">
+                    writeNav();
+                </script>
+                <hgroup>
+                    <h1>Геолокация</h1>
+                    <h1 class="Teaser">Пример геолокации</h1>
+                </hgroup>
+                <p class="Byline"></p>
+            </header>
+            <p id="result">Где вы живете?</p>
+            <div id="mapSurface"></div>
+            <script>
+                function initMap() {
+                    var result = document.getElementById('result');
+                    //     Устанавливаем некоторые параметры карты. В данном примере 
+                    //     устанавливаются начальный уровень масштабирования и тип карты. 
+                    //     Информацию о других параметрах см. в документации по Google Maps.
+                    var myOptions = {
+                        zoom: 13,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    //     Создаем карту, используя установленные выше параметры
+                    map = new google.maps.Map(document.getElementById("mapSurface"), myOptions);
+                    //     Пытаемся определить местоположение пользователя
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(
+                                function geolocationSuccess(position) {
+                                    // Преобразуем местоположение в объект LatLng
+                                    var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+                                    // Отображаем эту точку на карте
+                                    map.setCenter(location);
+                                    //Создаем всплывающее информационное окно и устанавливаем
+                                    //его текст и положение на карте.
+                                    var infowindow = new google.maps.InfoWindow();
+                                    infowindow.setContent("Вы находитесь где-то в этом районе.");
+                                    infowindow.setPosition(location);
+
+                                    //Отображаем всплывающее окно
+                                    infowindow.open(map);
+
+                                    result.innerHTML = "Местоположение отмечено на карте.";
+                                },
+                                function geolocationFailure(positionError) {
+                                    goToDefaultLocation(map);
+                                }
+                        );
+                        result.innerHTML = "Поиск завершен";
+                    } else {
+                        result.innerHTML = "Ваш браузер не поддерживает геолокацию";
+                        goToDefaultLocation();
+                    }
+                }
+                function goToDefaultLocation(map) {
+                    //Примерные координаты центра Москвы
+                    var moscow = new google.maps.LatLng(55.753878, 37.649275);
+                    map.setCenter(moscow);
+                }
+            </script>
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsW5fY9D2qRop0S2DuQbO-xnGy6Cbvll8&amp;callback=initMap">
+            </script>
+            <div class="emptyblock"></div>
+            <script type="text/javascript">
+                writeFooter();
+            </script>
+        </article>
+    </body>
+</html>
