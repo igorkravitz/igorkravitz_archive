@@ -745,7 +745,16 @@ function writeFooter() {
             datePub.toLocaleString("ru", options) +
             "</time></p>" +
             "<p>Copyright © 2017</p>" +
+            "<div id='qoo-counter'>" + 
+            '<a href="http://qoo.by/" title="Сервис коротких ссылок">' + 
+            '<img src="http://qoo.by/counter/standard/002.png" alt="Укоротить ссылку">' + 
+            '<div id="qoo-counter-visits"></div>' + 
+            '<div id="qoo-counter-views"></div>' + 
+            '</a>' + 
+            '</div>' + 
+            '<script type="text/javascript" src="http://qoo.by/counter.js"></script>' +      
             "</footer>"
+            
             );
 //	"<img src='http://img.nzeraf.com/images/skypeout.png' border='0'>
 }
