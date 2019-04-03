@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Медиа</title>
-<link rel="shortcut icon" href="#">
-<script type="text/javascript" src="javaScripts\index.js"></script>
-<link rel="stylesheet" href="http://vjs.zencdn.net/6.2.8/video-js.css" type="text/css">
-<link rel="stylesheet" href="flowplayer-7.2.1/skin/skin.css" type="text/css">
-<link rel="stylesheet" href="cssFiles/index.css" type="text/css"/>
- 
- <script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.min.js"></script> 
- <script type="text/javascript" src="flowplayer-7.2.1/flowplayer.min.js"></script> 
+	<meta charset="UTF-8">
+	<title>Медиа</title>
+	<link rel="shortcut icon" href="#">
+	<script type="text/javascript" src="javaScripts\index.js"></script>
+	<link rel="stylesheet" href="http://vjs.zencdn.net/6.2.8/video-js.css" type="text/css">
+	<link rel="stylesheet" href="flowplayer-7.2.1/skin/skin.css" type="text/css">
+	<link rel="stylesheet" href="cssFiles/index.css" type="text/css"/>
+
+	<!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.min.js"></script>  -->
+	<script type="text/javascript" src="flowplayer-7.2.1/flowplayer.min.js"></script> 
+	<script>window.addEventListener('DOMContentLoaded', loadDOMContent);</script>
 
 </head>
 <body>
@@ -72,6 +73,8 @@
 		<!-- 				width="640" height="360" -->
 		<!-- 				title="No video playback capabilities, please download the video below"> -->
 		<!-- 		</object> -->
+		<!-- <div class="emptyblock"></div> -->
+		<video id = 'v' autoplay></video>
 		<script type="text/javascript">writeFooter();</script>
 	</article>
 </body>

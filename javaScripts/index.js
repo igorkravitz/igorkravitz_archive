@@ -828,6 +828,37 @@ function stop() {
     video.currentTime = 0;
 }
 
+function loadDOMContent() {
+    var v = document.getElementById('v');
+    navigator.getUserMedia = (navigator.getUserMedia || 
+                                navigator.webkitGetUserMedia ||
+                                navigator.mozGetUserMedia ||
+                                navigator.msGetUserMedia);
+    if (navigator.getUserMedia) {
+        // Запросить доступ только к видео
+        navigator.getUserMedia(
+            {
+                video: true,
+                audio: false
+            },
+            function(stream) {
+                // var url = window.url || window.webkitURL;
+                // v.src = url ? url.createObjectURL(stream): stream;
+                v.srcObject=stream;
+                v.play();
+            },
+            function(error) {
+                alert('Что-то пошло не так. (код ошибки ' + error.code + ')');
+                return;
+            }
+            )                    
+    }
+    else {
+        alert('Извините, ваш браузер не поддерживает getUserMedia');
+        return;
+    }
+}
+
 function CalculateFunction(number1, number2, nameElement) {
     // e.preventDefault();
     // var result = val1+val2;
