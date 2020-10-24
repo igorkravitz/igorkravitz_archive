@@ -735,7 +735,7 @@ function writeFooter() {
             "<footer>" +
             "<p class='Disclaimer'>Содержимое доступно в соответствии с	лицензией Creative Commons Атрибуция.</p>" +
             "<details>" +
-            "<summary>Обо мне</summary>" +
+            "<summary id = 'footer'>Обо мне</summary>" +
             "<p><a href='skype:ikrawets?chat'>" +
             "ikrawets</a> " +
             "<a href='mailto:1C7782@gmail.com''>1C7782@gmail.com</a> " +
@@ -745,14 +745,14 @@ function writeFooter() {
             datePub.toLocaleString("ru", options) +
             "</time></p>" +
             "<p>Copyright © 2017</p>" +
-            "<div id='qoo-counter'>" + 
-            '<a href="http://qoo.by/" title="Сервис коротких ссылок">' + 
-            '<img src="http://qoo.by/counter/standard/002.png" alt="Укоротить ссылку">' + 
-            '<div id="qoo-counter-visits"></div>' + 
-            '<div id="qoo-counter-views"></div>' + 
-            '</a>' + 
-            '</div>' + 
-            '<script type="text/javascript" src="http://qoo.by/counter.js"></script>' +      
+//            "<div id='qoo-counter'>" + 
+//            '<a href="http://qoo.by/" title="Сервис коротких ссылок">' + 
+//            '<img src="http://qoo.by/counter/standard/002.png" alt="Укоротить ссылку">' + 
+//            '<div id="qoo-counter-visits"></div>' + 
+//            '<div id="qoo-counter-views"></div>' + 
+//            '</a>' + 
+//            '</div>' + 
+//            '<script type="text/javascript" src="http://qoo.by/counter.js"></script>' +      
             "</footer>"
             
             );
