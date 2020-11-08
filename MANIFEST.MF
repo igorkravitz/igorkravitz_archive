@@ -1,6 +1,6 @@
 CACHE MANIFEST
 #Canvas.html Canvas_offline.html
-#Manifest-Version: 1.7
+#Manifest-Version: 1.8
 #Class-Path: 
 # pages
 Canvas.html

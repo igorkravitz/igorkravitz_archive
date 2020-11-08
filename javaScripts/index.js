@@ -3,7 +3,6 @@ var display;
 var isDrawing;
 var cCanvas3;
 var Canvas3;
-
 function storageChanged(e) {
     var message = document.getElementById("updateMessage");
     message.innerHTML = "Обновление локального хранилища.";
@@ -573,7 +572,7 @@ function processKey(e) {
 
 function drawFrame8() {
     // Обновляем кадр только если значок движется
-    if (dx != 0 || dy != 0) {
+    if (dx !== 0 || dy !== 0) {
         // Закрашиваем перемещение значка желтым цветом
         context8.beginPath();
         context8.fillStyle = "rgb(254,244,207)";
@@ -762,6 +761,7 @@ function writeFooter() {
 function writeNav() {
     var titles = {
         'index.html': 'Главная',
+        'javaScript.html': 'JavaScript',
         'CSharp.html': 'C#',
         'Java.html': 'Java',
         'Python.html': 'Python',
@@ -777,14 +777,27 @@ function writeNav() {
         'WebWorkers.html': 'Фоновые вычисления'
     };
     document.write(
-            "<nav>" +
-            "<ul type='disc'>"
+            "<nav>"
+            //+ "<ul type='disc'>"
             );
-    for (var chapFile in titles) {
-        document.write("<li><a href=" + chapFile + ">" + titles[chapFile] + "</a></li>");
+    var textString = "";
+    arrTitles = Object.keys(titles);
+    for (let i = 0; i < arrTitles.length; i++) {
+        // const element = array[index];
+        textString += "<a href=" + arrTitles[i] + ">" + titles[arrTitles[i]] + "</a>";
+        if (i < arrTitles.length - 1) {
+            textString += " | ";
+        }
     }
+    // var lenTitles = Object.keys(titles).length;
+    // for (var chapFile in titles) {
+    //     // document.write("<a href=" + chapFile + ">" + titles[chapFile] + "</a> | ");
+    //     textString += "<a href=" + chapFile + ">" + titles[chapFile] + "</a>";
+    // }
+    // debugger;
+    document.write(textString);
     document.write(
-            "</ul>" +
+            // "</ul>" +
             "</nav>"
             );
 }

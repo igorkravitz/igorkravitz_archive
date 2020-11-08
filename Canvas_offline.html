@@ -1,73 +1,76 @@
 <!DOCTYPE html>
 <html lang="ru" manifest="MANIFEST.MF">
-    <head>
-        <meta charset="UTF-8">
-        <title>Обучение HTML</title>
-        <link rel="shortcut icon" href="#">
-        <link rel="stylesheet" href="cssFiles/index.css" type="text/css"/>
-        <script type="text/javascript" src="javaScripts\index.js"></script>
-        <!--[if lt IE 9]
+
+<head>
+    <meta charset="UTF-8">
+    <title>Обучение HTML</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="cssFiles/index.css" type="text/css" />
+    <script type="text/javascript" src="javaScripts/index.js"></script>
+    <!--[if lt IE 9]
               <script type="text/javascript" src="javaScripts\excanvas.js"></script>
         <![endif]-->
-        <!--<script src="jquery-1.3.2.min.js"></script>-->
-        <!--<script src="oomph.js"></script>-->
-    </head>
-    <body>
-        <article>
-            <header role="banner">
-                <script type="text/javascript">
-                    writeNav();
-                </script>
-                <hgroup>
-                    <h1>Холст</h1>
-                    <h1 class="Teaser">Пример создания холста</h1>
-                </hgroup>
-                <p class="Byline"></p>
-            </header>
-            <canvas id="drawingCanvas1" width="500" height="300"></canvas>
-            <script type="text/javascript">drawningCanvas1();</script>
-            <canvas id="drawingCanvas2" width="500" height="300"></canvas>
-            <script type="text/javascript">drawningCanvas2();</script>
-            <div class="CanvasContainer">
-                <canvas id="drawingCanvas6" width="700" height="500"></canvas>
-                <script type="text/javascript">drawningCanvas6()</script>
-            </div>
-            <div>
-                <button onclick="addRandomCircle()">Добавить круг</button>
-                <button onclick="clearCanvas6()">Очистить холст</button>
-            </div>
-            <div class="emptyblock_both"></div>
-            <div class="CanvasContainer">
-                <canvas id="drawingCanvas7" width="500" height="340"></canvas>
-                <script type="text/javascript">drawningCanvas7()</script>
-            </div>
-            <div>
-                <button onclick="addBall()">Добавить мячик</button>
-                <button onclick="clearBalls()">Очистить холст</button>
-            </div>
-            <div class="emptyblock_both"></div>
-            <div>
-                Размер мячика:<input id="ballSize" type="number" min="0" max="50" value="15">
-                <input id="connectedBalls" type="checkbox">Добавить соединяющие линии<br>
-            </div>
-            <div class="emptyblock_both"></div>
-            <!--<a href="Canvas_8.html">Лабиринт</a>-->
-            <div class="CanvasContainer">
-                <canvas id="drawingCanvas8" style="border: 6px double black;background: white"></canvas>
-                <script type="text/javascript">drawningCanvas8()</script>
-            </div>
-            <div>
-                <button onclick="loadHard()">Сложный лабиринт</button>
-                <button onclick="loadEasy()">Простой лабиринт</button>
-            </div>
-            <div>
-                <p>Используй стрелки или 'A','W','S','D'</p>
-            </div>
-            <img id="face" alt="" src="media/face.png" style="display: none">
-            <div class="emptyblock"></div>
+    <!--<script src="jquery-1.3.2.min.js"></script>-->
+    <!--<script src="oomph.js"></script>-->
+</head>
+
+<body>
+    <article>
+        <header role="banner">
             <script type="text/javascript">
-                writeFooter();
+                writeNav();
             </script>
-        </article>
-    </body>
+            <hgroup>
+                <h1>Холст</h1>
+                <h1 class="Teaser">Пример создания холста</h1>
+            </hgroup>
+            <p class="Byline"></p>
+        </header>
+        <canvas id="drawingCanvas1" width="500" height="300"></canvas>
+        <script type="text/javascript">drawningCanvas1();</script>
+        <canvas id="drawingCanvas2" width="500" height="300"></canvas>
+        <script type="text/javascript">drawningCanvas2();</script>
+        <div class="CanvasContainer">
+            <canvas id="drawingCanvas6" width="700" height="500"></canvas>
+            <script type="text/javascript">drawningCanvas6()</script>
+        </div>
+        <div>
+            <button onclick="addRandomCircle()">Добавить круг</button>
+            <button onclick="clearCanvas6()">Очистить холст</button>
+        </div>
+        <div class="emptyblock_both"></div>
+        <div class="CanvasContainer">
+            <canvas id="drawingCanvas7" width="500" height="340"></canvas>
+            <script type="text/javascript">drawningCanvas7()</script>
+        </div>
+        <div>
+            <button onclick="addBall()">Добавить мячик</button>
+            <button onclick="clearBalls()">Очистить холст</button>
+        </div>
+        <div class="emptyblock_both"></div>
+        <div>
+            Размер мячика:<input id="ballSize" type="number" min="0" max="50" value="15">
+            <input id="connectedBalls" type="checkbox">Добавить соединяющие линии<br>
+        </div>
+        <div class="emptyblock_both"></div>
+        <!--<a href="Canvas_8.html">Лабиринт</a>-->
+        <div class="CanvasContainer">
+            <canvas id="drawingCanvas8" style="border: 6px double black;background: white"></canvas>
+            <script type="text/javascript">drawningCanvas8()</script>
+        </div>
+        <div>
+            <button onclick="loadHard()">Сложный лабиринт</button>
+            <button onclick="loadEasy()">Простой лабиринт</button>
+        </div>
+        <div>
+            <p>Используй стрелки или 'A','W','S','D'</p>
+        </div>
+        <img id="face" alt="" src="media/face.png" style="display: none">
+        <div class="emptyblock"></div>
+        <script type="text/javascript">
+            writeFooter();
+        </script>
+    </article>
+</body>
+
 </html>

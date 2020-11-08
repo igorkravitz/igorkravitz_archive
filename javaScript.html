@@ -1,0 +1,302 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Упражнения learn.javascript.ru</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="cssFiles/index.css" type="text/css" />
+    <script type="text/javascript" src="javaScripts/index.js"></script>
+    <script type="text/javascript" src="javaScripts/jquery-1.3.2.js"></script>
+    <script type="text/javascript" src="javaScripts/main.js" ></script>
+    <!--<script type="text/javascript" src="oomph.js"></script>-->
+</head>
+
+<body>
+    <header role="banner">
+        <script type="text/javascript">writeNav();</script>
+        <hgroup>
+            <h1>JavaScript</h1>
+            <h1 class="Teaser">Упражнения с сайта <a href="http://learn.javascript.ru" target="_blank">learn.javascript.ru</a></h1>
+        </hgroup>
+    </header>
+    <h1>Заголовок</h1>
+    <p>Первый абзац.</p>
+    <p>Второй абзац.</p>
+    <p>Третий абзац.</p>
+    <p><a href="Hello world.html" target="_blank">Привет мир!</a></p>
+    <details>
+        <summary>Часть 1</summary>
+        <p><a href='#' onclick="retVar();">Получить значение переменной</a></p>
+        <p><a href='#' onclick="nameOfJavaScript();">"Официальное" название JavaScript</a></p>
+        <p><a href='#' onclick="repeatCycle();">Повторять цикл пока ввод неверен</a></p>
+        <p><a href='#' onclick="outputSimpleNumber('outputElement', 100);">Вывод простых чисел от 1 до 100</a></p>
+        <dev id="outputElement"></dev>
+        <p><a href='#' onclick="determineSignOfNumber();">Определить знак числа</a></p>
+        <p><a href='#' onclick="checkLogin();">Проверить логин</a></p>
+        <p><a href='#' onclick="arrowFunction();">Стрелочная функция</a></p>
+    </details>
+    <details>
+        <summary>Часть 2</summary>
+        <p><a href='autoTesting.html'>Автоматическое тестирование</a></p>
+        <p><a href='#' onclick="EmptyProperty();">Свойство объекта пустое</a></p>
+        <p><a href='#' onclick="sumOfObjectProperties();">Сумма свойств объекта</a></p>
+        <p><a href='#' onclick="multiplyProperties();">Умножение свойств объекта на два</a></p>
+        <p><a href='#' onclick="thisFunction();">Вызов функции с this</a></p>
+        <p><a href='#' onclick="calculatorObject();">Калькулятор</a></p>
+        <p><a href='#' onclick="calculatorNew();">Калькулятор с помощью конструктора</a></p>
+        <p><a href='#' onclick="accumulatorConstructor();">Аккумулятор</a></p>
+        <p><a href='#' onclick="sumOfNumbers();">Сумма пользовательских чисел</a></p>
+        <p><a href='#' onclick="promptNumber();">Ввод числового значения</a></p>
+    </details>
+    <details>
+        <summary>Объекты, типы данных</summary>
+        <table>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/create-array' target="_blank">Операции с массивами</a>
+                </td>
+                <td><a href='https://plnkr.co/edit/mqrkgA8MKBMxRrNx' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/array-input-sum' target="_blank">Сумма введённых чисел</a>
+                </td>
+                <td><a href='https://plnkr.co/edit/5XI8bJsGKdZCUxpr' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/filter-range' target="_blank">Подмассив наибольшей
+                        суммы</a></td>
+                <td><a href='https://plnkr.co/edit/0zMfmiwPsFiYx6rv' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/filter-range' target="_blank">Переведите текст вида
+                        border-left-width в borderLeftWidth</a></td>
+                <td><a href='https://plnkr.co/edit/3Ewgjv1HQAYfra6L' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/filter-range' target="_blank">Фильтрация по диапазону</a>
+                </td>
+                <td><a href='https://plnkr.co/edit/Wu3WwAocZofOCO81' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='#'>Вывод на странице</a></td>
+                <td><a href='#' onclick="testFunc(this, 'Тест');">Тест</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/filter-range-in-place' target="_blank">Фильтрация по
+                        диапазону "на месте"</a></td>
+                <td><a href='https://plnkr.co/edit/PXDVywP0kNAATVgb' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/sort-back' target="_blank">Сортировать в порядке по
+                        убыванию</a></td>
+                <td><a href='https://plnkr.co/edit/Eq7jtBy0oB7PtZZT' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/copy-sort-array' target="_blank">Скопировать и
+                        отсортировать массив</a></td>
+                <td><a href='https://plnkr.co/edit/knfwYh3aDqwI1wCS' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/calculator-extendable' target="_blank">Создать расширяемый
+                        калькулятор</a></td>
+                <td><a href='https://plnkr.co/edit/urfcVNNXOWHG7lGS' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/array-get-names' target="_blank">Трансформировать в массив
+                        имён</a></td>
+                <td><a href='https://plnkr.co/edit/hF8HyeaD6HbSC4BA' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/map-objects' target="_blank">Трансформировать в
+                        объекты</a></td>
+                <td><a href='https://plnkr.co/edit/PY2s182Q4Z3JWbBa' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/sort-objects' target="_blank">Отсортировать пользователей
+                        по возрасту</a></td>
+                <td><a href='https://plnkr.co/edit/fz8mJnBDUaZgI5Hr' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/shuffle' target="_blank">Перемешайте массив</a></td>
+                <td><a href='https://plnkr.co/edit/oiaUJgNnR1HnAfbe' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/average-age' target="_blank">Получить средний возраст</a>
+                </td>
+                <td><a href='https://plnkr.co/edit/Vbm4VKY6lmf8f5U2' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/array-unique' target="_blank">Оставить уникальные элементы
+                        массива</a></td>
+                <td><a href='https://plnkr.co/edit/ehiWKU1jw4o94942' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/array-unique-map' target="_blank">Фильтрация уникальных
+                        элементов массива</a></td>
+                <td><a href='https://plnkr.co/edit/zkfjMSwwFQDbKQLV' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/filter-anagrams' target="_blank">Отфильтруйте
+                        анаграммы</a></td>
+                <td><a href='https://plnkr.co/edit/9gGqM5OVRGfMQOD3' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/sum-salaries' target="_blank">Сумма свойств объекта</a>
+                </td>
+                <td><a href='https://plnkr.co/edit/vgTpBbLmYs2EtAl9' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/count-properties' target="_blank">Количество свойств
+                        объекта</a></td>
+                <td><a href='https://plnkr.co/edit/nLPxdjejaM199JFP' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/max-salary' target="_blank">Максимальная зарплата</a></td>
+                <td><a href='https://plnkr.co/edit/NQX72vRyOnol9LsS' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/weekday' target="_blank">День недели в европейской
+                        нумерации</a></td>
+                <td><a href='https://plnkr.co/edit/FS6J3rjf53fUL8tK' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/get-week-day' target="_blank">Покажите день недели</a>
+                </td>
+                <td><a href='https://plnkr.co/edit/AYaeDYxukzrn3xHQ' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/get-date-ago' target="_blank">Какой день месяца был много
+                        дней назад?</a></td>
+                <td><a href='https://plnkr.co/edit/G23UNGbNDVoh9LnP' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/last-day-of-month' target="_blank">Последнее число
+                        месяца?</a></td>
+                <td><a href='https://plnkr.co/edit/MfVCEUshlG3pUITb' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/get-seconds-today' target="_blank">Сколько сегодня прошло
+                        секунд?</a></td>
+                <td><a href='https://plnkr.co/edit/yJFzuauDM9HKQ2o6' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/format-date-relative' target="_blank">Форматирование
+                        относительной даты</a></td>
+                <td><a href='https://plnkr.co/edit/VAJDr0effO7xicUU' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/serialize-event-circular' target="_blank">Исключить
+                        обратные ссылки</a></td>
+                <td><a href='https://plnkr.co/edit/P5WNIHYpdiPeZ8K3' target="_blank">Решение</a></td>
+            </tr>
+        </table>
+    </details>
+    <details>
+        <summary>Продвинутая работа с функциями</summary>
+        <table>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/sum-to' target="_blank">Вычислить сумму чисел до
+                        данного</a></td>
+                <td><a href='https://plnkr.co/edit/lEw7tEMds5VayVSt' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/factorial' target="_blank">Вычислить факториал</a></td>
+                <td><a href='https://plnkr.co/edit/alBC65KxuvY3r0lV' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/fibonacci-numbers' target="_blank">Числа Фибоначчи</a>
+                </td>
+                <td><a href='https://plnkr.co/edit/H3ehQc8eZLQIJ0fR' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/output-single-linked-list' target="_blank">Вывод
+                        односвязного списка</a></td>
+                <td><a href='https://plnkr.co/edit/B4QbsEFUTaVUsXvG' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/output-single-linked-list-reverse' target="_blank">Вывод
+                        односвязного списка в обратном порядке</a></td>
+                <td><a href='https://plnkr.co/edit/M7J5Vc8jA4CY5L0O' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/closure-sum' target="_blank">Сумма с помощью замыканий</a>
+                </td>
+                <td><a href='https://plnkr.co/edit/CwFw4ci7ETeV9jHQ' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/filter-through-function' target="_blank">Фильтрация с
+                        помощью функции</a></td>
+                <td><a href='https://plnkr.co/edit/ykky6q54ig4LXHRM' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/sort-by-field' target="_blank">Сортировать по полю</a>
+                </td>
+                <td><a href='https://plnkr.co/edit/z8ZDjlJwi3rmyqoB' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/make-army' target="_blank">Армия функций</a></td>
+                <td><a href='https://plnkr.co/edit/nLwTBX00WgtaXRz6' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/counter-inc-dec' target="_blank">Установка и уменьшение
+                        значения счётчика</a></td>
+                <td><a href='https://plnkr.co/edit/1ef97uwmXNbEKpO5' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/sum-many-brackets' target="_blank">Сумма с произвольным
+                        количеством скобок</a></td>
+                <td><a href='https://plnkr.co/edit/7HFf6pPeKnQiv7Xd' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/output-numbers-100ms' target="_blank">Вывод каждую
+                        секунду</a></td>
+                <td><a href='https://plnkr.co/edit/VGn8bHNwdLGnKeba' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/spy-decorator' target="_blank">Декоратор-шпион</a></td>
+                <td><a href='https://plnkr.co/edit/p0QbHLjc0lKG8b3l' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/delay' target="_blank">Задерживающий декоратор</a></td>
+                <td><a href='https://plnkr.co/edit/PpwxSwv33wQtWsqq' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/debounce' target="_blank">Декоратор debounce</a></td>
+                <td><a href='https://plnkr.co/edit/FW9zp3ulDnMgrWOb' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/throttle' target="_blank">Тормозящий (throttling)
+                        декоратор</a></td>
+                <td><a href='https://plnkr.co/edit/xXghR4cs4vqKBEaS' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/question-use-bind' target="_blank">Исправьте функцию,
+                        теряющую "this"</a></td>
+                <td><a href='https://plnkr.co/edit/2FyzdezWkPRXeFAX' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/ask-partial' target="_blank">Использование частично
+                        применённой функции для логина</a></td>
+                <td><a href='https://plnkr.co/edit/DEoFeETkJ87y8FuE' target="_blank">Решение</a></td>
+            </tr>
+        </table>
+    </details>
+    <details open>
+        <summary>Прототипы, наследование</summary>
+        <table>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/search-algorithm' target="_blank">Алгоритм поиска</a></td>
+                <td><a href='https://plnkr.co/edit/HdAWocaWOTFNA2ch' target="_blank">Решение</a></td>
+            </tr>
+            <tr>
+                <td><a href='https://learn.javascript.ru/task/defer-to-prototype' target="_blank">Добавить функциям
+                        метод "f.defer(ms)"</a></td>
+                <td><a href='https://plnkr.co/edit/OIao7VuZ3zVznzqi' target="_blank">Решение</a></td>
+            </tr>
+        </table>
+    </details>
+    <div class="emptyblock"></div>
+    <script type="text/javascript">writeFooter();</script>
+</body>
+
+</html>

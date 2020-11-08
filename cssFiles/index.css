@@ -1,4 +1,4 @@
-@CHARSET "UTF-8";
+/* @CHARSET "UTF-8"; */
 
 article, aside, figure, figcaption, footer, header, hgroup, nav, section,
 summary {
@@ -202,7 +202,12 @@ hgroup .Teaser {
     /* 	background-color: #00ff00; */
     margin: 0px;
     font-weight: bold;
-    color: olive;
+    /* color: olive; */
+    color: black;
+}
+
+h1 a {
+    text-decoration: none;
 }
 
 figure {
@@ -217,7 +222,8 @@ nav {
     margin: 10px;
     max-width: 3000px;
     background-color: #FF6633;
-    text-align: center;
+    /* text-align: center; */
+    /* overflow: scroll; */
 }
 
 mark {
@@ -225,20 +231,36 @@ mark {
     color: white;
 }
 
-nav ul {
-    list-style: disc;
-    display: inline-block;
-}
+/* nav ul { */
+    /* list-style: disc; */
+    /* display: inline-block; */
+    /* overflow: scroll; */
+    /* overflow-x:scroll; */
+    /* overflow-y: auto; */
+    /* position:relative;
+    display:inherit!important;    
+    top:0!important;
+    left:0!important;
+    width:100%;
+    height:auto;
+    max-height:500px;
+    margin:0;
+    border-left:none;
+    border-right:none;
+    border-radius:0!important;
+    box-shadow:none */
+/* } */
 
-nav ul li {
+/* nav ul li {
     float: left;
     margin: 0px 10px 0px 10px;
-}
+} */
 
-nav ul a {
+nav a {
     text-decoration: none;
-    display: block;
+    /* display: block; */
     color: #FFFFFF;
+    /* color: #cc1e83; */
 }
 /* input { */
 /* 	width: 200px; */
@@ -274,7 +296,8 @@ header .Byline {
     font-style: italic;
     font-size: small;
     margin: 0px;
-    color: lime;
+    /* color: lime; */
+    color: rgb(0, 68, 255);
 }
 
 footer {
@@ -349,51 +372,6 @@ input[type=reset] {
     border: solid 1px black;
     width: 600px;
     margin-bottom: 5px;
-}
-
-.vcard {
-
-}
-
-
-.title {
-
-}
-
-.fn {
-
-}
-
-.nickname {
-
-}
-
-.org {
-
-}
-
-.tel {
-
-}
-
-.street-address {
-
-}
-
-.locality {
-
-}
-
-.postal-code {
-
-}
-
-.country-name {
-
-}
-
-.url {
-
 }
 
 #mapSurface {
