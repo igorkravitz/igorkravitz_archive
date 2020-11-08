@@ -773,9 +773,9 @@ function writeNav() {
         'XMLHttpRequestEx.html': 'Запрос к веб-серверу',
         'ServerEvents.html': 'Серверные события',
         'webSockets.html': 'Веб-сокеты',
-        'Geolocation.html': 'Геолокация',
+        'GeoLocation.html': 'Геолокация',
         'WebWorkers.html': 'Фоновые вычисления'
-    };
+    }; 
     document.write(
             "<nav>"
             //+ "<ul type='disc'>"
