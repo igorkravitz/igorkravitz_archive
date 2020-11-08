@@ -83,9 +83,9 @@ summary {
 
 .photo {
     /* 	text-align: right; */
-    /* 	margin: 200px; */
     float: right;
     margin: 10px;
+    /* margin-top: 150px; */
 }
 
 canvas {
