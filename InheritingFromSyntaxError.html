@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>inheriting from SyntaxError</title>
+</head>
+
+<body>
+  <script>
+    class FormatError extends SyntaxError {
+      constructor(message) {
+        super(message);
+        this.name = 'FormatError';
+      }
+    }
+    let err = new FormatError("ошибка форматирования");
+    let a = 10;
+    document.writeln(err.message + '<br>'); // ошибка форматирования
+
+    document.writeln(err.name + '<br>'); // FormatError
+    document.writeln(err.stack + '<br>'); // stack
+
+    document.writeln((err instanceof FormatError) + '<br>'); // true
+    document.writeln((err instanceof SyntaxError) + '<br>'); // true (потому что наследует от SyntaxError)
+    a += 10;
+
+  </script>
+</body>
+
+</html>
